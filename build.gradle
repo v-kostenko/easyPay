@@ -16,6 +16,7 @@ dependencies {
             "org.slf4j:slf4j-simple:1.7.29",
             "org.junit.jupiter:junit-jupiter:5.8.2"
             )
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
 }
 
 test {
