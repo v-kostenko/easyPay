@@ -4,13 +4,12 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import pojo.ApiCheckRequestBody;
-import pojo.ApiConfirmRequestBody;
+import pojo.check.ApiCheckRequestBody;
+import pojo.check.ApiConfirmRequestBody;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
 import static io.restassured.filter.log.LogDetail.ALL;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -41,7 +40,7 @@ public class Check {
 
         ApiConfirmRequestBody apiConfirmRequestBody = new ApiConfirmRequestBody("380660050002", "000000");
         given().spec(requestSpecification).body(apiConfirmRequestBody)
-                .when().post(BASE_URL + "/confirm")
+                .when().post(BASE_URL + "/api/check/confirm")
                 .then().spec(responseSpecification).statusCode(400)
                 .body("error.errorCode", equalTo("INVALID_CONFIRM_CODE"));
     }
@@ -55,7 +54,7 @@ public class Check {
 
         ApiConfirmRequestBody apiConfirmRequestBody = new ApiConfirmRequestBody("380660050002", "0000");
         given().spec(requestSpecification).body(apiConfirmRequestBody)
-                .when().post(BASE_URL + "/confirm")
+                .when().post(BASE_URL + "/api/check/confirm")
                 .then().spec(responseSpecification).statusCode(400)
                 .body("error.errorCode", equalTo("INVALID_CONFIRM_CODE"));
     }
@@ -71,7 +70,7 @@ public class Check {
         Thread.sleep(181000);
         ApiConfirmRequestBody apiConfirmRequestBody = new ApiConfirmRequestBody("380660050002", "000000");
         given().spec(requestSpecification).body(apiConfirmRequestBody)
-                .when().post(BASE_URL + "/confirm")
+                .when().post(BASE_URL + "/api/check/confirm")
                 .then().spec(responseSpecification).statusCode(400)
                 .body("error.errorCode", equalTo("VERIFICATION_CODE_ALREADY_EXPIRED"));
     }
@@ -86,9 +85,15 @@ public class Check {
         // Thread.sleep( "secondsToExpire": 180 * 1000 + 1000);
         ApiConfirmRequestBody apiConfirmRequestBody = new ApiConfirmRequestBody("380660050002", "0000");
         given().spec(requestSpecification).body(apiConfirmRequestBody)
-                .when().post(BASE_URL + "/confirm")
+                .when().post(BASE_URL + "/api/check/confirm")
                 .then().spec(responseSpecification).statusCode(400)
                 .body("error.errorCode", equalTo("VERIFICATION_CODE_ALREADY_EXPIRED"));
+    }
+
+    @Test
+    @Disabled
+    public void foo() {
+        System.out.println("=========");
     }
 
 

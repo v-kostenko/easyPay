@@ -1,4 +1,4 @@
-package pojo;
+package pojo.check;
 
 public class ApiConfirmRequestBody {
     private String phone;

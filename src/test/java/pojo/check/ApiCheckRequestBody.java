@@ -1,4 +1,4 @@
-package pojo;
+package pojo.check;
 
 public class ApiCheckRequestBody {
     private String phone;
