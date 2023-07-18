@@ -1,0 +1,32 @@
+{
+  "cards": [
+    {
+      "instrumentId": 163006635,
+      "pan": "444111******4530",
+      "expire": "0329",
+      "alias": "NESTERENKO YEVHEN",
+      "cardId": 1687663,
+      "properties": [
+        {
+          "name": "Color",
+          "value": "#2196F3"
+        }
+      ],
+      "priorityIndex": 0,
+      "activated": true,
+      "kind": "SimpleCard",
+      "activateCodeType": "Mpi3Ds",
+      "isForwardCoBrand": false,
+      "cardGuid": "fdd77e28-bff7-4a25-8070-3c1b93146e10",
+      "bankName": null,
+      "bankInfoModel": {
+        "bankName": "Універсал банк",
+        "icon": "UniverMono_N3.png",
+        "paymentSystem": "Visa",
+        "color": "FF9284"
+      }
+    }
+  ],
+  "properties": [],
+  "error": null
+}

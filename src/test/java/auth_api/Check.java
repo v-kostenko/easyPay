@@ -1,5 +1,6 @@
 package auth_api;
 
+import io.qameta.allure.Owner;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
@@ -32,6 +33,7 @@ public class Check {
             .build();
 
     @Test
+    @Owner("Volodymyr Kostenko")
     public void wrongOtpCode() {
         ApiCheckRequestBody apiCheckRequestBody = new ApiCheckRequestBody("380660050002", "sms");
         given().spec(requestSpecification).body(apiCheckRequestBody)
@@ -46,6 +48,7 @@ public class Check {
     }
 
     @Test
+    @Owner("Volodymyr Kostenko")
     public void wrongCallbackCode() {
         ApiCheckRequestBody apiCheckRequestBody = new ApiCheckRequestBody("380660050002", "callback");
         given().spec(requestSpecification).body(apiCheckRequestBody)
@@ -60,6 +63,7 @@ public class Check {
     }
 
     @Test
+    @Owner("Volodymyr Kostenko")
     public void checkSecondsToExpireSms() throws InterruptedException {
         ApiCheckRequestBody apiCheckRequestBody = new ApiCheckRequestBody("380660050002", "sms");
         given().spec(requestSpecification).body(apiCheckRequestBody)
@@ -76,6 +80,7 @@ public class Check {
     }
 
     @Test
+    @Owner("Volodymyr Kostenko")
     public void checkSecondsToExpireCallback() {
         ApiCheckRequestBody apiCheckRequestBody = new ApiCheckRequestBody("380660050002", "callback");
         given().spec(requestSpecification).body(apiCheckRequestBody)

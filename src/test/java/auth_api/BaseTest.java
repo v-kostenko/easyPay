@@ -1,10 +1,12 @@
 package auth_api;
 
+import createAppPojo.CreateApp;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import pojo.auth.AuthUser;
 
 import static io.restassured.RestAssured.given;
@@ -35,6 +37,25 @@ public abstract class BaseTest {
                 .then().extract().jsonPath().getString("data.access_token");
     }
 
+    // chromeOptions.addArguments("--headless") - сам браузер не запускается
+
+
+    private CreateApp veryFirstMethodToGetAppIdAndPageId() {
+        return given().log().all()
+                .when().post("https://apistage.easypay.ua/api/system/createApp")
+                .then().statusCode(200)
+                .extract().body().as(CreateApp.class);
+    }
+
+    public String getPageId() {
+        CreateApp createApp = veryFirstMethodToGetAppIdAndPageId();
+        return createApp.getPageId();
+    }
+
+    public String getAppId() {
+        CreateApp createApp = veryFirstMethodToGetAppIdAndPageId();
+        return createApp.getAppId();
+    }
 
 
 }

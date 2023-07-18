@@ -1,6 +1,7 @@
 package user_cards;
 
 import auth_api.BaseTest;
+import io.qameta.allure.Owner;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
@@ -40,6 +41,7 @@ public class UserCards extends BaseTest {
     }
 
     @Test
+    @Owner("Volodymyr Kostenko")
     public void getUserCards(){
         given().spec(requestSpecification1).header("Authorization", "Bearer " + TOKEN)
                 .when().get(BASE_URL + "/api/cards/get")
