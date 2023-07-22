@@ -3,6 +3,10 @@ plugins {
     id 'io.qameta.allure' version '2.9.6'
 }
 
+repositories {
+    mavenCentral()
+}
+
 //--------------------------------allure for JUNIT
 allure {
     report {
@@ -18,9 +22,7 @@ allure {
     }
 }
 
-repositories {
-    mavenCentral()
-}
+
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -31,14 +33,17 @@ dependencies {
             "io.rest-assured:rest-assured:5.3.1",
             "io.qameta.allure:allure-rest-assured:2.17.3",
             "org.slf4j:slf4j-simple:1.7.29",
-            "org.junit.jupiter:junit-jupiter:5.8.2"
+            "org.junit.jupiter:junit-jupiter:5.8.2",
+            "com.codeborne:selenide:6.16.0",
+            "io.qameta.allure:allure-selenide:2.17.3",
+            "org.slf4j:slf4j-simple:1.7.29"
             )
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
 
 }
 
 tasks.withType(Test) {
-    useJUnitPlatform()//use junit for task
+    useJUnitPlatform() // use junit for task
 
     systemProperties(System.getProperties()) //получить проперти (с командной строки)
 //--------------------------------------------------------------------------------------->For parallel tests
@@ -48,6 +53,7 @@ tasks.withType(Test) {
                 'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
                 'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
                 'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
+                'junit.jupiter.execution.parallel.config.fixed.max-pool-size': System.getProperty("threads").toInteger(),//<------
                 'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
         ]
     }
@@ -63,4 +69,20 @@ tasks.withType(Test) {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.register('web', Test) {
+    useJUnitPlatform {
+        includeTags 'web'
+    }
+}
+tasks.register('mobile', Test) {
+    useJUnitPlatform {
+        includeTags 'mobile'
+    }
+}
+tasks.register('api', Test) {
+    useJUnitPlatform {
+        includeTags 'api'
+    }
 }
