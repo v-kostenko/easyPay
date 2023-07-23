@@ -63,7 +63,7 @@ public class MainPage {
         return new AuthRegisterPage();
     }
 
-    public CatalogPopularPage searchByKeyWord(String keyWord) {
+    public static CatalogPopularPage searchByKeyWord(String keyWord) {
         searchInput.shouldBe(Condition.visible).setValue(keyWord).shouldBe(Condition.visible).pressEnter();
         return new CatalogPopularPage();
     }
