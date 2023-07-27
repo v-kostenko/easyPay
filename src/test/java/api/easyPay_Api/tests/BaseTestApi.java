@@ -14,7 +14,7 @@ public class BaseTestApi {
     protected String pageId = "";
     protected String requestedSessionId = "";
     protected String token = "";
-    protected RequestSpecification specification;
+    public static RequestSpecification specification;
 
     @BeforeEach
     public void setUp() {

@@ -17,6 +17,7 @@ import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.*;
 import static web.pageObjects.MainPage.*;
 import static web.pageObjects.PaymentsPage.getProfileHeaderTitleOnPaymentsPage;
+import static web.utils.Helper.successLogin;
 
 @Tag("web")
 @Tag("smoke")

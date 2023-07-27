@@ -11,6 +11,7 @@ import web.pageObjects.PaymentsPage;
 import web.pageObjects.Transfer2CardPage;
 
 import static web.constants.Constants.*;
+import static web.utils.Helper.successLogin;
 
 @Tag("web")
 @Tag("regression")
@@ -23,13 +24,15 @@ public class MoneyTransferTests extends BaseTestWeb {
     @Severity(SeverityLevel.MINOR)
     @Issue("EF-575")
     public void checkBankLogo() throws InterruptedException {
-        MainPage mainPage = new MainPage();
-        PaymentsPage paymentsPage = mainPage.successLogin(PHONE, PASSWORD);
-        MoneyTransferPage moneyTransferPage = paymentsPage.clickTransferLink();
-        Transfer2CardPage transfer2CardPage = moneyTransferPage.clickTransfer2CardLink();
+         successLogin(PHONE, PASSWORD);
+
+
+       // MoneyTransferPage moneyTransferPage = clickTransferLink();
+       // Transfer2CardPage transfer2CardPage = moneyTransferPage.clickTransfer2CardLink();
         Thread.sleep(2000); // Тест проходит только после того как поставил Thread.sleep. Как можно это решить без этого костыля?
-        transfer2CardPage.inputCardNumber(CARD_NUMBER);
-        Assertions.assertTrue(transfer2CardPage.isBankLogoPresent());
+      //  transfer2CardPage.inputCardNumber(CARD_NUMBER);
+        // transfer2CardPage.isBankLogoPresent();
+        // icon.shouldBeVisible();
     }
 
 

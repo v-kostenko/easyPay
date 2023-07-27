@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 
 @Tag("api")
 @Tag("regression")
-public class Contacts extends BaseTestApi {
+public class ContactsTest extends BaseTestApi {
 
     @Test
     @DisplayName("Get contacts")

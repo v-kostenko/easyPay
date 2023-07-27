@@ -7,26 +7,20 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MainPage {
-    public static SelenideElement headerLoginButton = $x("//button[contains(@class,'header__sign-in')]");
-    public static SelenideElement headerSignUpButton = $x("//button[contains(@class,'header__sign-up button')]");
-    public static SelenideElement loginFormTitle = $x("//h2[contains(@class,'log-in_title show-for-large')]");
-    public static SelenideElement phoneInput = $x("//input[contains(@class,'phone-field_input')]");
-    public static SelenideElement passwordInput = $x("//input[@name='password']");
-    public static SelenideElement authLoginButton = $x("//div[@class='auth-button_block']//button");
-    public static SelenideElement authRegistrationLink = $x("//a[contains(@class,'registration-link')]");
-    public static SelenideElement phoneErrorMessage = $x("//div[contains(@class,'phone-field-pb')]//div[@class='ng-star-inserted']");
-    public static SelenideElement passwordErrorMessage = $x("//div[contains(@class,'mat-form-field')]//div[@class='ng-star-inserted']");
-    public static SelenideElement forgotPasswordLink = $x("//div[contains(@class,'restore__link')]/a");
-    public static SelenideElement searchInput = $x("//input[@id='search']");
+    public static SelenideElement headerLoginButton = $x("//button[contains(@class,'header__sign-in')]"),
+            headerSignUpButton = $x("//button[contains(@class,'header__sign-up button')]"),
+            loginFormTitle = $x("//h2[contains(@class,'log-in_title show-for-large')]"),
+            phoneInput = $x("//input[contains(@class,'phone-field_input')]"),
+            passwordInput = $x("//input[@name='password']"),
+            authLoginButton = $x("//div[@class='auth-button_block']//button"),
+            authRegistrationLink = $x("//a[contains(@class,'registration-link')]"),
+            phoneErrorMessage = $x("//div[contains(@class,'phone-field-pb')]//div[@class='ng-star-inserted']"),
+            passwordErrorMessage = $x("//div[contains(@class,'mat-form-field')]//div[@class='ng-star-inserted']"),
+            forgotPasswordLink = $x("//div[contains(@class,'restore__link')]/a"),
+            searchInput = $x("//input[@id='search']");
 
 
-    public static PaymentsPage successLogin(String phone, String password) {
-        headerLoginButton.shouldBe(Condition.visible).click();
-        phoneInput.shouldBe(Condition.visible).setValue(phone);
-        passwordInput.shouldBe(Condition.visible).setValue(password);
-        authLoginButton.click();
-        return new PaymentsPage();
-    }
+
 
     public static void clickHeaderLoginButton() {
         headerLoginButton.shouldBe(Condition.visible).click();
