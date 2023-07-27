@@ -1,20 +1,14 @@
 package api.easyPay_Api.tests;
 
 import api.easyPay_Api.pojo.Contact;
-import api.easyPay_Api.steps.AuthStep;
-import api.easyPay_Auth.pojo.auth.AuthUser;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static api.easyPay_Api.steps.AuthStep.getDesktopToken;
 import static io.restassured.RestAssured.given;
 
 @Tag("api")
