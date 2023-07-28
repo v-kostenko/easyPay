@@ -93,6 +93,6 @@ tasks.register('api', Test) {
 
 tasks.register('simpletest', Test) {
     useJUnitPlatform {
-        includeTags 'simple'
+        includeTags 'simpletest'
     }
 }
