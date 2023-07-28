@@ -1,6 +1,6 @@
-package api.easyPay_Api.tests;
+package api.easyPayApi.tests;
 
-import api.easyPay_Auth.tests.BaseTestApi;
+import api.easyPayAuth.tests.BaseTestApi;
 import io.qameta.allure.Owner;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;

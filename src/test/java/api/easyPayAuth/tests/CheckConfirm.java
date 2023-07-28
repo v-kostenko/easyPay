@@ -1,6 +1,6 @@
-package api.easyPay_Auth.tests;
+package api.easyPayAuth.tests;
 
-import api.easyPay_Auth.pojo.check.ApiConfirmCode;
+import api.easyPayAuth.pojo.check.ApiConfirmCode;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Disabled;

@@ -1,4 +1,4 @@
-package api.easyPay_Auth.tests;
+package api.easyPayAuth.tests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;

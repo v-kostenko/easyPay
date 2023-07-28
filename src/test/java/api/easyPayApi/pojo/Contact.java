@@ -1,4 +1,4 @@
-package api.easyPay_Api.pojo;
+package api.easyPayApi.pojo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

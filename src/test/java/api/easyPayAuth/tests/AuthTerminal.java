@@ -1,4 +1,4 @@
-package api.easyPay_Auth.tests;
+package api.easyPayAuth.tests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;

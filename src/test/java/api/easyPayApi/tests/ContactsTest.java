@@ -1,6 +1,6 @@
-package api.easyPay_Api.tests;
+package api.easyPayApi.tests;
 
-import api.easyPay_Api.pojo.Contact;
+import api.easyPayApi.pojo.Contact;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;

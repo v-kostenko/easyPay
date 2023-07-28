@@ -7,7 +7,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MainPage {
-    public static SelenideElement headerLoginButton = $x("//button[contains(@class,'header__sign-in')]"),
+    public static SelenideElement
+            headerLoginButton = $x("//button[contains(@class,'header__sign-in')]"),
             headerSignUpButton = $x("//button[contains(@class,'header__sign-up button')]"),
             loginFormTitle = $x("//h2[contains(@class,'log-in_title show-for-large')]"),
             phoneInput = $x("//input[contains(@class,'phone-field_input')]"),
@@ -18,29 +19,6 @@ public class MainPage {
             passwordErrorMessage = $x("//div[contains(@class,'mat-form-field')]//div[@class='ng-star-inserted']"),
             forgotPasswordLink = $x("//div[contains(@class,'restore__link')]/a"),
             searchInput = $x("//input[@id='search']");
-
-
-
-
-    public static void clickHeaderLoginButton() {
-        headerLoginButton.shouldBe(Condition.visible).click();
-    }
-
-    public static String getLoginFormTitle() {
-        return loginFormTitle.shouldBe(Condition.enabled).getText();
-    }
-
-    public static String getPhoneErrorMessage() {
-        return phoneErrorMessage.shouldBe(Condition.visible).getText();
-    }
-
-    public static String getPasswordErrorMessage() {
-        return passwordErrorMessage.shouldBe(Condition.visible).getText();
-    }
-
-    public static void clickAuthLoginButton() {
-        authLoginButton.shouldBe(Condition.interactable).click();
-    }
 
     public AuthRegisterPage clickHeaderSignUpButton() {
         headerSignUpButton.click();
@@ -57,9 +35,6 @@ public class MainPage {
         return new AuthRegisterPage();
     }
 
-    public static CatalogPopularPage searchByKeyWord(String keyWord) {
-        searchInput.shouldBe(Condition.visible).setValue(keyWord).shouldBe(Condition.visible).pressEnter();
-        return new CatalogPopularPage();
-    }
+
 
 }

@@ -1,4 +1,4 @@
-package api.easyPay_Auth.steps;
+package api.easyPayAuth.steps;
 
 import io.qameta.allure.Step;
 

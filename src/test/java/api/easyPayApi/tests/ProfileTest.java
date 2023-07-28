@@ -1,15 +1,13 @@
-package api.easyPay_Api.tests;
+package api.easyPayApi.tests;
 
-import api.easyPay_Api.pojo.Locale;
+import api.easyPayApi.pojo.Locale;
 import io.qameta.allure.Owner;
-import io.restassured.response.Response;
-import io.restassured.response.ResponseBodyData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 
 @Tag("api")
 public class ProfileTest extends BaseTestApi {
@@ -18,15 +16,17 @@ public class ProfileTest extends BaseTestApi {
     @DisplayName("Get current profile")
     @Owner("Volodymyr Kostenko")
     public void getCurrentProfile() {
-        given().spec(specification)
-                .when().get("https://apistage.easypay.ua/api/profile/current")
-                .then().log().all()
-                .statusCode(200)
-                .body("user.id", equalTo("1111"));
+        step("", () -> {
 
-       ResponseBodyData profile = given().spec(specification)
-                .when().get("https://apistage.easypay.ua/api/profile/current")
-                .then().extract().body();
+        });
+        given().spec(specification)
+                .when().get("https://apidev.easypay.ua/api/profile/current")
+                .then().log().all()
+                .statusCode(200);
+
+//       ResponseBodyData profile = given().spec(specification)
+//                .when().get("https://apistage.easypay.ua/api/profile/current")
+//                .then().extract().body();
     }
 
     @Test

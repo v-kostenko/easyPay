@@ -1,10 +1,9 @@
-package api.easyPay_Api.tests;
+package api.easyPayApi.tests;
 
-import api.easyPay_Auth.pojo.auth.AuthUser;
+import api.easyPayAuth.pojo.auth.AuthUser;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import static io.restassured.RestAssured.given;

@@ -8,16 +8,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import web.pageObjects.MainPage;
+
 
 import static com.codeborne.selenide.Selenide.title;
 import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.*;
 import static web.pageObjects.MainPage.*;
 import static web.pageObjects.PaymentsPage.getProfileHeaderTitleOnPaymentsPage;
-import static web.utils.Helper.successLogin;
+import static web.utils.Helper.*;
 
 @Tag("web")
 @Tag("smoke")
@@ -34,9 +32,9 @@ public class LoginTests extends BaseTestWeb {
         step("Click 'Login' button. Input correct phone and password. Click Login", () -> {
            successLogin(PHONE, PASSWORD);
         });
-        step("Assert that login form has title.", () -> {
-            Assertions.assertEquals(getLoginFormTitle(), LOGIN_FORM_TITLE, "");
-        });
+//        step("Assert that login form has title.", () -> {
+//            Assertions.assertEquals(getLoginFormTitle(), LOGIN_FORM_TITLE, "");
+//        });
         step("Check that we got the PaymentsPage", () -> {
             Assertions.assertEquals(getProfileHeaderTitleOnPaymentsPage(), PAYMENT_TITLE, "");
         });

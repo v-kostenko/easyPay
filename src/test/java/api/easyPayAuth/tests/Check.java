@@ -1,6 +1,6 @@
-package api.easyPay_Auth.tests;
+package api.easyPayAuth.tests;
 
-import api.easyPay_Auth.pojo.check.ApiCheckChannel;
+import api.easyPayAuth.pojo.check.ApiCheckChannel;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +22,6 @@ public class Check extends BaseTestApi{
     @Issue(value = "JIRA-111")
     public void incorrectPhoneFormat(){
         ApiCheckChannel channel = new ApiCheckChannel("3800660051447", "sms");
-
         given().spec(requestSpecification).body(channel)
                 .when().post(BASE_URL_TEST + PATH)
                 .then().log().all().statusCode(400)

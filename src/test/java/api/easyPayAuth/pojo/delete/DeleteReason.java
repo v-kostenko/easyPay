@@ -1,4 +1,4 @@
-package api.easyPay_Auth.pojo.delete;
+package api.easyPayAuth.pojo.delete;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,4 +1,4 @@
-package api.easyPay_Auth.pojo.auth;
+package api.easyPayAuth.pojo.auth;
 
 public class AuthUser {
     private String phone;

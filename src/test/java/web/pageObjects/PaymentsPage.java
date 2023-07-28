@@ -14,7 +14,7 @@ public class PaymentsPage {
 
 
     public static String getProfileHeaderTitleOnPaymentsPage(){
-        return profileHeaderTitle.shouldBe(Condition.enabled).getText();
+        return profileHeaderTitle.shouldBe(Condition.visible).getText();
     }
 
     public MoneyTransferPage clickTransferLink(){

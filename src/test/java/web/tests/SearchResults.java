@@ -13,7 +13,7 @@ import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.NOT_FOUND_SERVICE_TEXT;
 import static web.pageObjects.CatalogPopularPage.getServiceNotFoundText;
 import static web.pageObjects.CatalogPopularPage.isSearchResultListEmpty;
-import static web.pageObjects.MainPage.searchByKeyWord;
+import static web.utils.Helper.searchByKeyWord;
 
 @Tag("web")
 @Tag("regression")

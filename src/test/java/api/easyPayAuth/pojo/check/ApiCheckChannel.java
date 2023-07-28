@@ -1,4 +1,4 @@
-package api.easyPay_Auth.pojo.check;
+package api.easyPayAuth.pojo.check;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
