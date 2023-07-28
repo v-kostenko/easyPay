@@ -1,1 +1,14 @@
 name: Try to run SimpleTest class
+
+on: workflow_dispatch # этот иветн значит, что мы его будем запускать в ручном режиме
+
+jobs:
+  # Даем любое название
+  run_simple_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download repo
+        uses: actions/checkout@v3
+
+
+
