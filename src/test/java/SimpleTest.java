@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static web.constants.Constants.PAYMENT_TITLE;
 import static web.pageObjects.PaymentsPage.getProfileHeaderTitleOnPaymentsPage;
 
-@Tag("simple")
+@Tag("simpletest")
 public class SimpleTest {
 
     @Test
