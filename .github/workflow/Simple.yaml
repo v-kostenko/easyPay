@@ -6,6 +6,7 @@ jobs:
   test:
     # где заускаем
     runs-on: ubuntu-latest
+
     # что делаем
     steps:
       # выкачиваем репозиторий
@@ -16,7 +17,7 @@ jobs:
           distribution: 'zulu'
           java-version: '8'
       # запускаем тесты
-      - run: gradle clean simple
+      - run: gradle clean simpletest
       # скачиваем историю тестов
       - uses: actions/checkout@v2
         if: always()
