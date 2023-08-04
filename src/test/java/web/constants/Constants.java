@@ -6,10 +6,14 @@ public class Constants {
     public static final String PASSWORD = "Qwerty1234";
     public static final String PAYMENT_TITLE = "Платежі";
     public static final String LOGIN_FORM_TITLE = "Увійти до кабінету EasyPay";
-    public static final String PHONE_ERROR_MESSAGE = "Обов'язково для заповнення";
-    public static final String PASSWORD_ERROR_MESSAGE = "Обов'язково для заповнення";
+    public static final String PHONE_FIELD_ERROR_MESSAGE = "Обов'язково для заповнення";
+    public static final String PHONE_FIELD_WRONG_FORMAT_ERROR_MESSAGE = "Не відповідає правилу";
+    public static final String PASSWORD_FIELD_ERROR_MESSAGE = "Обов'язково для заповнення";
     public static final String CARD_NUMBER = "5355280204508178";
     public static final String NOT_FOUND_SERVICE_TEXT = "Послугу з такою назвою не знайдено.\n" +
             "Ви можете оплатити рахунок за реквізитами компанії-одержувача.";
+    public static final String RESTORE_PAGE_PATH  = "/auth/restore";
+    public static final String REGISTER_PAGE_PATH  = "/auth/register";
+    public static final String WRONG_PASSWORD_ERROR_MESSAGE  = "Помилка: Некоректний пароль";
 
 }

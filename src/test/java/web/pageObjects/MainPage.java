@@ -1,10 +1,9 @@
 package web.pageObjects;
 
-import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
     public static SelenideElement
@@ -15,26 +14,22 @@ public class MainPage {
             passwordInput = $x("//input[@name='password']"),
             authLoginButton = $x("//div[@class='auth-button_block']//button"),
             authRegistrationLink = $x("//a[contains(@class,'registration-link')]"),
-            phoneErrorMessage = $x("//div[contains(@class,'phone-field-pb')]//div[@class='ng-star-inserted']"),
-            passwordErrorMessage = $x("//div[contains(@class,'mat-form-field')]//div[@class='ng-star-inserted']"),
+            phoneFieldErrorMessage = $x("//div[contains(@class,'phone-field-pb')]//div[@class='ng-star-inserted']"),
+            passwordFieldErrorMessage = $x("//div[contains(@class,'mat-form-field')]//div[@class='ng-star-inserted']"),
             forgotPasswordLink = $x("//div[contains(@class,'restore__link')]/a"),
-            searchInput = $x("//input[@id='search']");
+            searchInput = $x("//input[@id='search']"),
+            wrongPasswordErrorMessage = $x("//div[contains(@class,'block-error')]"),
+            transferMoneyButton = $x("//button[@id='c2c-home-unique']");
+
+
+
+
+    public static ElementsCollection sideMenu = $$x("//div[@class='sidemenu']//span");
 
     public AuthRegisterPage clickHeaderSignUpButton() {
         headerSignUpButton.click();
         return new AuthRegisterPage();
     }
-
-    public AuthRestorePage clickForgotPasswordLink() {
-        forgotPasswordLink.click();
-        return new AuthRestorePage();
-    }
-
-    public AuthRegisterPage clickAuthRegistrationLink() {
-        authRegistrationLink.click();
-        return new AuthRegisterPage();
-    }
-
 
 
 }

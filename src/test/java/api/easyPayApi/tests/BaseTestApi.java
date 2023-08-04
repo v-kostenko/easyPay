@@ -48,7 +48,7 @@ public class BaseTestApi {
                 .addHeader("AppId", appId)
                 .build();
 
-        AuthUser authUser = new AuthUser("380958872559", "1234567Qq");
+        AuthUser authUser = new AuthUser("380660051447", "Qwerty1234");
 
         token = given().spec(requestSpecification).body(authUser)
                 .when().post("https://authstage.easypay.ua/api/auth/desktop")

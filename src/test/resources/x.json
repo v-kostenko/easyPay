@@ -1,0 +1,33 @@
+{
+  …
+}
+additionalItems
+:
+{addTemplate: true}
+addTemplate: true
+browserInfo:
+{colorDepth: "24",
+screenHeight: "1080",
+screenWidth: "1920",
+language: "uk",
+javaEnabled: false, …
+}
+colorDepth: "24"
+javaEnabled: false
+language
+: "uk"
+screenHeight: "1080"
+screenWidth: "1920"
+timeZone:
+"-180"
+resultUrl: "https://easypay.ua/ua/order/result"
+userPaymentInstrument: {instrumentType: "Card", instrumentId: 164166571, cvv: "280", pan: "5355280204508178", expire: "12/23", …
+}
+IsSaveCard
+: true
+cvv: "280"
+expire: "12/23"
+instrumentId:
+164166571
+instrumentType: "Card"
+pan: "5355280204508178"

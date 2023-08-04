@@ -1,9 +1,8 @@
-package web.utils;
+package web.steps;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import web.pageObjects.CatalogPopularPage;
-import web.pageObjects.PaymentsPage;
 
 import java.time.Duration;
 
@@ -11,7 +10,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static web.pageObjects.MainPage.*;
 import static web.pageObjects.PaymentsPage.profileHeaderTitle;
 
-public class Helper {
+public class LoginSteps {
 
     @Step("Success login")
     public static void successLogin(String phone, String password) {
@@ -22,31 +21,61 @@ public class Helper {
         profileHeaderTitle.shouldBe(visible, Duration.ofSeconds(30));
     }
 
+    @Step("Input phone")
+    public static void inputPhone(String phone){
+        phoneInput.shouldBe(visible).sendKeys(phone);
+    }
+
+    @Step("Input password")
+    public static void inputPassword(String password){
+        passwordInput.shouldBe(visible).sendKeys(password);
+    }
+
+
+    @Step("Click header login button")
     public static void clickHeaderLoginButton() {
         headerLoginButton.shouldBe(Condition.visible).click();
     }
 
+    @Step("Get login form title")
     public static String getLoginFormTitle() {
         return loginFormTitle.shouldBe(Condition.enabled).getText();
     }
 
+    @Step("Get phone error message")
     public static String getPhoneErrorMessage() {
-        return phoneErrorMessage.shouldBe(Condition.visible).getText();
+        return phoneFieldErrorMessage.shouldBe(Condition.visible).getText();
     }
 
+    @Step("Get password error message")
     public static String getPasswordErrorMessage() {
-        return passwordErrorMessage.shouldBe(Condition.visible).getText();
+        return passwordFieldErrorMessage.shouldBe(Condition.visible).getText();
     }
 
+    @Step("Click auth login button")
     public static void clickAuthLoginButton() {
         authLoginButton.shouldBe(Condition.interactable).click();
+    }
+
+    @Step("Click forgot password link on login form")
+    public static void clickForgotPasswordLink() {
+        forgotPasswordLink.shouldBe(visible).click();
+    }
+
+    @Step("Click 'Registration' button on login for")
+    public static void clickAuthRegistrationLink() {
+        authRegistrationLink.click();
+    }
+
+    @Step("Get wrong password error message")
+    public static String getWrongPasswordErrorMessage(){
+        return wrongPasswordErrorMessage.shouldBe(visible).getText();
     }
 
     public static CatalogPopularPage searchByKeyWord(String keyWord) {
         searchInput.shouldBe(Condition.visible).setValue(keyWord).shouldBe(Condition.visible).pressEnter();
         return new CatalogPopularPage();
     }
-
 
 
 }

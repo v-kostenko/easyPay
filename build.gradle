@@ -96,3 +96,9 @@ tasks.register('simpletest', Test) {
         includeTags 'simpletest'
     }
 }
+
+tasks.register('login', Test) {
+    useJUnitPlatform {
+        includeTags 'login'
+    }
+}

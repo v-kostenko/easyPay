@@ -13,17 +13,13 @@ import static com.codeborne.selenide.Selenide.open;
 public abstract class BaseTestWeb {
 
     @BeforeAll
-    public static void set(){
+    public static void setUp(){
         Configuration.timeout = 10000;
         Configuration.browser = "firefox";
         Configuration.baseUrl = "https://easypay.ua/ua";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true) );
     }
 
-    @BeforeEach
-    public void setUp(){
-        open("/");
-    }
 
     @AfterEach
     public void tearDown(){

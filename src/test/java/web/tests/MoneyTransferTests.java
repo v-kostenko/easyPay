@@ -1,17 +1,12 @@
 package web.tests;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import web.pageObjects.MainPage;
-import web.pageObjects.MoneyTransferPage;
-import web.pageObjects.PaymentsPage;
-import web.pageObjects.Transfer2CardPage;
 
 import static web.constants.Constants.*;
-import static web.utils.Helper.successLogin;
+import static web.steps.LoginSteps.successLogin;
 
 @Tag("web")
 @Tag("regression")

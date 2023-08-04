@@ -5,15 +5,13 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import web.pageObjects.CatalogPopularPage;
-import web.pageObjects.MainPage;
 import org.junit.jupiter.api.Assertions;
 
 import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.NOT_FOUND_SERVICE_TEXT;
 import static web.pageObjects.CatalogPopularPage.getServiceNotFoundText;
 import static web.pageObjects.CatalogPopularPage.isSearchResultListEmpty;
-import static web.utils.Helper.searchByKeyWord;
+import static web.steps.LoginSteps.searchByKeyWord;
 
 @Tag("web")
 @Tag("regression")
