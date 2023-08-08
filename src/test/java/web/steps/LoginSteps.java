@@ -7,6 +7,7 @@ import web.pageObjects.CatalogPopularPage;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
+import static web.pageObjects.CatalogPopularPage.searchTagTitle;
 import static web.pageObjects.MainPage.*;
 import static web.pageObjects.PaymentsPage.profileHeaderTitle;
 
@@ -22,18 +23,18 @@ public class LoginSteps {
     }
 
     @Step("Input phone")
-    public static void inputPhone(String phone){
+    public static void inputPhone(String phone) {
         phoneInput.shouldBe(visible).sendKeys(phone);
     }
 
     @Step("Input password")
-    public static void inputPassword(String password){
+    public static void inputPassword(String password) {
         passwordInput.shouldBe(visible).sendKeys(password);
     }
 
     @Step("Click header login button")
     public static void clickHeaderLoginButton() {
-        while(!loginFormTitle.isDisplayed()){
+        while (!loginFormTitle.isDisplayed()) {
             headerLoginButton.shouldBe(Condition.visible).click();
         }
     }
@@ -69,14 +70,11 @@ public class LoginSteps {
     }
 
     @Step("Get wrong password error message")
-    public static String getWrongPasswordErrorMessage(){
+    public static String getWrongPasswordErrorMessage() {
         return wrongPasswordErrorMessage.shouldBe(visible).getText();
     }
 
-    public static CatalogPopularPage searchByKeyWord(String keyWord) {
-        searchInput.shouldBe(Condition.visible).setValue(keyWord).shouldBe(Condition.visible).pressEnter();
-        return new CatalogPopularPage();
-    }
+
 
 
 }

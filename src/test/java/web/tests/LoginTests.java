@@ -5,9 +5,6 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import web.utils.RetryTestExtension;
 
 
 import static com.codeborne.selenide.Selenide.open;
@@ -21,7 +18,6 @@ import static web.steps.RestoreSteps.isRestorePageUrlContainsPath;
 @Tag("smoke")
 @Tag("regression")
 @Tag("login")
-@ExtendWith(RetryTestExtension.class) // Ретрай не работает
 public class LoginTests extends BaseTestWeb {
     @BeforeEach
     public void setUpPath() {
@@ -84,7 +80,6 @@ public class LoginTests extends BaseTestWeb {
     @Test
     @DisplayName("Check that 'ForgotPasswordLink' redirect to AuthRestorePage")
     @Owner(value = "Volodymyr Kostenko")
-    @ExtendWith(RetryTestExtension.class)
     public void checkForgotPasswordLink() {
         clickHeaderLoginButton();
         clickForgotPasswordLink();
@@ -105,6 +100,8 @@ public class LoginTests extends BaseTestWeb {
             // Assertions.assertTrue(isRegisterPageUrlContainsPath(REGISTER_PAGE_PATH));
         });
     }
+
+
 
 
 }

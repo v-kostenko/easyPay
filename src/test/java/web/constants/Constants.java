@@ -16,6 +16,7 @@ public class Constants {
     public static final String REGISTER_PAGE_PATH  = "/auth/register";
     public static final String WRONG_PASSWORD_ERROR_MESSAGE  = "Помилка: Некоректний пароль";
     public static final String NON_EXISTENT_IBAN = "UA223226690000026007300900000";
+    public static final String EXISTENT_IBAN = "UA223226690000026007300905964";
 
 
 }
