@@ -1,6 +1,7 @@
 package web.tests;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -18,14 +19,13 @@ public class MoneyTransferTests extends BaseTestWeb {
     @Owner("Volodymyr Kostenko")
     @Severity(SeverityLevel.MINOR)
     @Issue("EF-575")
+    @Disabled
     public void checkBankLogo() throws InterruptedException {
-         successLogin(PHONE, PASSWORD);
-
-
-       // MoneyTransferPage moneyTransferPage = clickTransferLink();
-       // Transfer2CardPage transfer2CardPage = moneyTransferPage.clickTransfer2CardLink();
-        Thread.sleep(2000); // Тест проходит только после того как поставил Thread.sleep. Как можно это решить без этого костыля?
-      //  transfer2CardPage.inputCardNumber(CARD_NUMBER);
+        successLogin(PHONE, PASSWORD);
+        // MoneyTransferPage moneyTransferPage = clickTransferLink();
+        // Transfer2CardPage transfer2CardPage = moneyTransferPage.clickTransfer2CardLink();
+        //  Thread.sleep(2000); // Тест проходит только после того как поставил Thread.sleep. Как можно это решить без этого костыля?
+        //  transfer2CardPage.inputCardNumber(CARD_NUMBER);
         // transfer2CardPage.isBankLogoPresent();
         // icon.shouldBeVisible();
     }

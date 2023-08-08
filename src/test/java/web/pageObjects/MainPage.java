@@ -19,9 +19,8 @@ public class MainPage {
             forgotPasswordLink = $x("//div[contains(@class,'restore__link')]/a"),
             searchInput = $x("//input[@id='search']"),
             wrongPasswordErrorMessage = $x("//div[contains(@class,'block-error')]"),
-            transferMoneyButton = $x("//button[@id='c2c-home-unique']");
-
-
+            transferMoneyButton = $x("//button[@id='c2c-home-unique']"),
+            headerLogo = $x("//div[contains(@class,'header_logo')]//img");
 
 
     public static ElementsCollection sideMenu = $$x("//div[@class='sidemenu']//span");

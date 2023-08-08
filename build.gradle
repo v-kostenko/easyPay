@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'io.qameta.allure' version '2.9.6'
+    id 'org.gradle.test-retry' version '1.0.0'
 }
 
 repositories {
@@ -73,6 +74,11 @@ tasks.withType(Test) {
 
 test {
     useJUnitPlatform()
+    retry{
+        maxRetries = 2
+        maxFailures = 20
+        failOnPassedAfterRetry = true
+    }
 }
 
 tasks.register('web', Test) {

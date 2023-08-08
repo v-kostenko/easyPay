@@ -36,7 +36,7 @@ public class LoginTests extends BaseTestWeb {
     public void loginWithValidCred() {
         successLogin(PHONE, PASSWORD);
         step("Check that we got the PaymentsPage", () -> {
-            Assertions.assertEquals(getProfileHeaderTitleOnPaymentsPage(), PAYMENT_TITLE, "Don't find Payment page title");
+            Assertions.assertEquals(PAYMENT_TITLE, getProfileHeaderTitleOnPaymentsPage(), "Don't find Payment page title");
         });
     }
 
@@ -49,22 +49,21 @@ public class LoginTests extends BaseTestWeb {
         inputPassword("xxx");
         clickAuthLoginButton();
         step("Check that we got error message", () -> {
-            Assertions.assertEquals(getWrongPasswordErrorMessage(), WRONG_PASSWORD_ERROR_MESSAGE);
+            Assertions.assertEquals(WRONG_PASSWORD_ERROR_MESSAGE, getWrongPasswordErrorMessage());
         });
     }
 
     @Test
     @DisplayName("Input wrong phone format. Check error message")
     @Owner("Volodymyr Kostenko")
-    public void inputPhoneWrongFormat(){
+    public void inputPhoneWrongFormat() {
         // Когда запускаю класс или таску, то бывает, что не кликает на кнопку логина и тест падает.
         // Точнее в Алюр репорте отображается, что кликнули на логин, но сама форма не отобразилась
-
         clickHeaderLoginButton();
         inputPhone("6600514");
         clickAuthLoginButton();
         step("Check error messages for phone field and password field", () -> {
-            Assertions.assertEquals(getPhoneErrorMessage().trim(), PHONE_FIELD_WRONG_FORMAT_ERROR_MESSAGE);
+            Assertions.assertEquals(PHONE_FIELD_WRONG_FORMAT_ERROR_MESSAGE, getPhoneErrorMessage().trim());
         });
     }
 
@@ -77,8 +76,8 @@ public class LoginTests extends BaseTestWeb {
         clickHeaderLoginButton();
         clickAuthLoginButton();
         step("Check error messages for phone field and password field", () -> {
-            Assertions.assertEquals(getPhoneErrorMessage(), PHONE_FIELD_ERROR_MESSAGE);
-            Assertions.assertEquals(getPasswordErrorMessage(), PASSWORD_FIELD_ERROR_MESSAGE);
+            Assertions.assertEquals(PHONE_FIELD_ERROR_MESSAGE, getPhoneErrorMessage());
+            Assertions.assertEquals(PASSWORD_FIELD_ERROR_MESSAGE, getPasswordErrorMessage());
         });
     }
 
@@ -91,7 +90,7 @@ public class LoginTests extends BaseTestWeb {
         clickForgotPasswordLink();
         step("Check that RestorePage URL ends with '/auth/restore'", () -> {
             //  Почему возвращает false?
-              Assertions.assertTrue(isRestorePageUrlContainsPath(RESTORE_PAGE_PATH));
+            Assertions.assertTrue(isRestorePageUrlContainsPath(RESTORE_PAGE_PATH));
         });
     }
 
@@ -101,13 +100,11 @@ public class LoginTests extends BaseTestWeb {
     public void checkRegisterLink() {
         clickHeaderLoginButton();
         clickAuthRegistrationLink();
-        step("Check that RegisterPage URL ends with '/auth/register'", ()->{
+        step("Check that RegisterPage URL ends with '/auth/register'", () -> {
             //  Почему возвращает false?
-             // Assertions.assertTrue(isRegisterPageUrlContainsPath(REGISTER_PAGE_PATH));
+            // Assertions.assertTrue(isRegisterPageUrlContainsPath(REGISTER_PAGE_PATH));
         });
     }
-
-
 
 
 }

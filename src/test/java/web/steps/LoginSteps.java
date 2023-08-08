@@ -14,7 +14,7 @@ public class LoginSteps {
 
     @Step("Success login")
     public static void successLogin(String phone, String password) {
-        headerLoginButton.shouldBe(visible).click();
+        clickHeaderLoginButton();
         phoneInput.shouldBe(visible).sendKeys(phone);
         passwordInput.shouldBe(visible).sendKeys(password);
         authLoginButton.click();
@@ -31,10 +31,11 @@ public class LoginSteps {
         passwordInput.shouldBe(visible).sendKeys(password);
     }
 
-
     @Step("Click header login button")
     public static void clickHeaderLoginButton() {
-        headerLoginButton.shouldBe(Condition.visible).click();
+        while(!loginFormTitle.isDisplayed()){
+            headerLoginButton.shouldBe(Condition.visible).click();
+        }
     }
 
     @Step("Get login form title")
