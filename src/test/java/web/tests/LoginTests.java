@@ -53,8 +53,6 @@ public class LoginTests extends BaseTestWeb {
     @DisplayName("Input wrong phone format. Check error message")
     @Owner("Volodymyr Kostenko")
     public void inputPhoneWrongFormat() {
-        // Когда запускаю класс или таску, то бывает, что не кликает на кнопку логина и тест падает.
-        // Точнее в Алюр репорте отображается, что кликнули на логин, но сама форма не отобразилась
         clickHeaderLoginButton();
         inputPhone("6600514");
         clickAuthLoginButton();
