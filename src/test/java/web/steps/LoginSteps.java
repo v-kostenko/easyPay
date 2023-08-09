@@ -74,6 +74,11 @@ public class LoginSteps {
         return wrongPasswordErrorMessage.shouldBe(visible).getText();
     }
 
+    @Step("Click 'Google' auth button")
+    public static void clickGoogleAuthButton(){
+        googleAuthButton.shouldBe(visible).click();
+    }
+
 
 
 

@@ -6,12 +6,14 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.title;
+
+import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
-import static web.constants.Constants.MAIN_PAGE_TITLE;
-import static web.steps.MainPageSteps.clickTransferMoneyButton;
-import static web.steps.MainPageSteps.isHeaderLogoDisplayed;
+import static web.constants.Constants.*;
+import static web.pageObjects.MainPage.sideMenu;
+import static web.steps.MainPageSteps.*;
+import static web.steps.TopUpMobileSteps.getTopUpPhoneFieldErrorMessage;
+
 
 @Tag(value = "web")
 public class MainPageTests extends BaseTestWeb {
@@ -45,7 +47,38 @@ public class MainPageTests extends BaseTestWeb {
     @Owner("Volodymyr Kostenko")
     public void checkAllElementsPresence() {
         Assertions.assertTrue(isHeaderLogoDisplayed());
-        // Check other elements
+        // catalog is present
+        // transfer is present
+        // language is present
+        //
+    }
+
+    @Test
+    @DisplayName("Check side-menu size")
+    @Owner("Volodymyr Kostenko")
+    public void checkSideMenuSize() {
+        Assertions.assertEquals(20, sideMenu.size());
+    }
+
+    @Test
+    @DisplayName("Check It is not in compliance with the rule")
+    @Owner("Volodymyr Kostenko")
+    public void topUpMobileCheckIsNotComplianceWithTheRuleErrorMessage() {
+        Assertions.assertEquals(TOP_UP_MOBILE_HEADER, getTopUpMobileHeader());
+        inputPhoneForTopUp(PHONE.replaceAll("[0]", ""));
+        clickTopUpSubmitButton();
+        step("Check error message", () -> {
+            Assertions.assertEquals(PHONE_FIELD_WRONG_FORMAT_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
+        });
+    }
+
+    @Test
+    @DisplayName("Check mobile top-up mandatory for completion error message")
+    public void topUpMobileCheckMandatoryErrorMessage() {
+        clickTopUpSubmitButton();
+        step("Check error message", () -> {
+            Assertions.assertEquals(PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
+        });
     }
 
 

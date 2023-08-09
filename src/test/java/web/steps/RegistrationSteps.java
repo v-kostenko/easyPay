@@ -32,5 +32,10 @@ public class RegistrationSteps {
         registrationPhoneField.shouldBe(Condition.visible).setValue(phone);
     }
 
+    @Step("Get RegistrationPage header")
+    public static String getRegistrationPageHeader(){
+        return registrationHeader.shouldBe(Condition.visible).getText();
+    }
+
 
 }

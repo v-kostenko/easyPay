@@ -26,7 +26,7 @@ public class SearchResults extends BaseTestWeb {
     public void searchByIbanNotFound() throws InterruptedException {
         searchByKeyWord(NON_EXISTENT_IBAN);
         step("Check that we don't find any service. Check text.", () -> {
-            Assertions.assertEquals(getServiceNotFoundText(), NOT_FOUND_SERVICE_TEXT);
+            Assertions.assertEquals(NOT_FOUND_SERVICE_TEXT, getServiceNotFoundText());
         });
     }
 

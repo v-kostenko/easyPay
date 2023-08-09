@@ -12,7 +12,8 @@ import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.*;
 import static web.pageObjects.PaymentsPage.getProfileHeaderTitleOnPaymentsPage;
 import static web.steps.LoginSteps.*;
-import static web.steps.RestoreSteps.isRestorePageUrlContainsPath;
+import static web.steps.RegistrationSteps.getRegistrationPageHeader;
+import static web.steps.RestoreSteps.getRestorePageHeader;
 
 @Tag("web")
 @Tag("smoke")
@@ -70,7 +71,7 @@ public class LoginTests extends BaseTestWeb {
         clickHeaderLoginButton();
         clickAuthLoginButton();
         step("Check error messages for phone field and password field", () -> {
-            Assertions.assertEquals(PHONE_FIELD_ERROR_MESSAGE, getPhoneErrorMessage());
+            Assertions.assertEquals(PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getPhoneErrorMessage());
             Assertions.assertEquals(PASSWORD_FIELD_ERROR_MESSAGE, getPasswordErrorMessage());
         });
     }
@@ -78,28 +79,30 @@ public class LoginTests extends BaseTestWeb {
     @Test
     @DisplayName("Check that 'ForgotPasswordLink' redirect to AuthRestorePage")
     @Owner(value = "Volodymyr Kostenko")
-    public void checkForgotPasswordLink() {
+    public void checkRedirectForgotPasswordLink() {
         clickHeaderLoginButton();
         clickForgotPasswordLink();
-        step("Check that RestorePage URL ends with '/auth/restore'", () -> {
-            //  Почему возвращает false?
-            Assertions.assertTrue(isRestorePageUrlContainsPath(RESTORE_PAGE_PATH));
+        step("Check RestorePage header", () -> {
+            Assertions.assertEquals(RESTORE_PAGE_HEADER, getRestorePageHeader());
         });
     }
 
     @Test
-    @DisplayName("Check that 'RegisterLink' redirect to AuthRestorePage")
+    @DisplayName("Check that 'RegisterLink' redirect to AuthRegisterPage")
     @Owner("Volodymyr Kostenko")
-    public void checkRegisterLink() {
+    public void checkRedirectRegisterLink() {
         clickHeaderLoginButton();
         clickAuthRegistrationLink();
         step("Check that RegisterPage URL ends with '/auth/register'", () -> {
-            //  Почему возвращает false?
-            // Assertions.assertTrue(isRegisterPageUrlContainsPath(REGISTER_PAGE_PATH));
+            Assertions.assertEquals(REGISTER_PAGE_HEADER, getRegistrationPageHeader());
         });
     }
 
-
+    @Test
+    public void checkGoogleAuth() {
+        clickHeaderLoginButton();
+        clickGoogleAuthButton();
+    }
 
 
 }

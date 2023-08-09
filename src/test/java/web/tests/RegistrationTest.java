@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static web.constants.Constants.PHONE_FIELD_ERROR_MESSAGE;
+import static web.constants.Constants.PHONE_FIELD_MANDATORY_ERROR_MESSAGE;
 import static web.constants.Constants.PHONE_FIELD_WRONG_FORMAT_ERROR_MESSAGE;
 import static web.steps.RegistrationSteps.*;
 
@@ -31,7 +31,7 @@ public class RegistrationTest extends BaseTestWeb {
         clickOnTheInputField();
         clickOnThePhonePrefix();
         step("Check error message", () -> {
-            Assertions.assertEquals(PHONE_FIELD_ERROR_MESSAGE, getErrorMessageText());
+            Assertions.assertEquals(PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getErrorMessageText());
         });
     }
 
@@ -56,6 +56,7 @@ public class RegistrationTest extends BaseTestWeb {
 
 
     @Test
+    @Disabled
     public void bbb() {
         // Открыть страницу регистрации и ввести не полный номер телефона
         // Кнопка "Зарегистироваться" не активна

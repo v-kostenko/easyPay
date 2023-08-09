@@ -11,10 +11,8 @@ public class MainPageSteps {
 
     @Step("Click money transfer money")
     public static void clickTransferMoneyButton() {
-//        while(! ){
-//
-//        }
         transferMoneyButton.shouldBe(visible).click();
+
     }
 
     @Step("Check that header logo is displayed")
@@ -26,6 +24,24 @@ public class MainPageSteps {
     public static void searchByKeyWord(String keyWord) {
         while (!searchTagTitle.isDisplayed())
             searchInput.shouldBe(Condition.visible).setValue(keyWord).shouldBe(Condition.visible).pressEnter();
+    }
+
+    @Step("Check top-up mobile header")
+    public static String getTopUpMobileHeader() {
+        return topUpMobileHeader.shouldBe(visible).getText();
+    }
+
+    @Step("Input phone for top-up")
+    public static void inputPhoneForTopUp(String phone) {
+        topUpPhoneInput.shouldBe(visible).setValue(phone);
+    }
+
+    @Step("Click top-up submit button")
+    public static void clickTopUpSubmitButton() {
+        topUpSubmitButton.shouldBe(visible).click();
+        if (topUpMobileHeader.isDisplayed()) {
+            topUpSubmitButton.shouldBe(visible).click();
+        }
     }
 
 
