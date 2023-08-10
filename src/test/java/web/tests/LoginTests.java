@@ -102,6 +102,7 @@ public class LoginTests extends BaseTestWeb {
     public void checkGoogleAuth() {
         clickHeaderLoginButton();
         clickGoogleAuthButton();
+        // Що тут перевірити? Відкривається сторінка Гугл.
     }
 
 

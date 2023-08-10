@@ -12,7 +12,6 @@ public class MainPageSteps {
     @Step("Click money transfer money")
     public static void clickTransferMoneyButton() {
         transferMoneyButton.shouldBe(visible).click();
-
     }
 
     @Step("Check that header logo is displayed")
