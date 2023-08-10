@@ -16,7 +16,7 @@ public abstract class BaseTestWeb {
     public static void setUp(){
         Configuration.timeout = 10000;
         Configuration.browser = "firefox";
-        Configuration.baseUrl = "https://easypay.ua/ua";
+        Configuration.baseUrl = "https://dev.easypay.ua/ua";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true) );
     }
 

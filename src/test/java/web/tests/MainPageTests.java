@@ -1,11 +1,17 @@
 package web.tests;
 
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -58,6 +64,28 @@ public class MainPageTests extends BaseTestWeb {
     @Owner("Volodymyr Kostenko")
     public void checkSideMenuSize() {
         Assertions.assertEquals(20, sideMenu.size());
+    }
+
+    @Test
+    public void openAllLinksFromSideMenuAndCheckUrl() {
+        List<String> links = new ArrayList<>();
+        for (SelenideElement element : sideMenu) {
+            links.add(element.getAttribute("href"));
+        }
+
+        for (int i = 0; i < links.size(); i++) {
+            String url = links.get(i);
+            Selenide.open(url);
+            String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
+            Assertions.assertEquals(url, currentUrl);
+        }
+    }
+
+    @Test
+    public void click() {
+        for (int i = 0; i < sideMenu.size(); i++) {
+            sideMenu.get(i).click();
+        }
     }
 
     @Test

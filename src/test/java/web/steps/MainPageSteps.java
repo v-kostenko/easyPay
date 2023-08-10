@@ -21,9 +21,11 @@ public class MainPageSteps {
     }
 
     @Step("Search by IBAN")
-    public static void searchByKeyWord(String keyWord) {
-        while (!searchTagTitle.isDisplayed())
+    public static void searchByKeyWord(String keyWord) throws InterruptedException {
+        while (!searchTagTitle.isDisplayed()) {
             searchInput.shouldBe(Condition.visible).setValue(keyWord).shouldBe(Condition.visible).pressEnter();
+            Thread.sleep(500);
+        }
     }
 
     @Step("Check top-up mobile header")
