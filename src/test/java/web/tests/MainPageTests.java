@@ -1,5 +1,6 @@
 package web.tests;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -13,12 +14,15 @@ import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.*;
 import static web.pageObjects.MainPage.sideMenu;
+import static web.pageObjects.SuccessAfterPaymentPage.successAfterPaymentTitle;
 import static web.pageObjects.TopUpMobilePage.*;
 import static web.steps.MainPageSteps.*;
+import static web.steps.PaymentSteps.*;
 import static web.steps.TopUpMobileSteps.*;
 
 
@@ -166,10 +170,10 @@ public class MainPageTests extends BaseTestWeb {
         step("Check advice default text", () -> {
             Assertions.assertEquals(ADVICE_DEFAULT_TEXT, topUpAdviceDefaultText.getText());
         });
-        step("Check add card text", ()->{
+        step("Check add card text", () -> {
             Assertions.assertEquals(ADD_CARD_TEXT, topUpAdviceAddCardText.getText());
         });
-        step("Check add advice create template text", ()->{
+        step("Check add advice create template text", () -> {
             Assertions.assertEquals(ADVICE_CREATE_TEMPLATE, topUpAdviceAdviceTemplateText.getText());
         });
         // Register icon
@@ -179,20 +183,27 @@ public class MainPageTests extends BaseTestWeb {
     }
 
     @Test
-    public void topUp() throws InterruptedException {
-        inputPhoneForTopUp("80958872559");
+    @DisplayName("Success mobile top-up from main page")
+    @Owner("Volodymyr Kostenko")
+    @Disabled
+    public void topUpMobileFromMainPage() throws InterruptedException {
+        inputPhoneForTopUp("80660051447");
         Thread.sleep(2000);
         clickTopUpSubmitButton();
 
         inputAmountToTopUpMobileField("1");
         topUpMobilePageClickSubmitButton();
 
+        inputCardNumber("");
+        inputExpireDate("");
+        inputCvv("");
+        clickPaySubmitButton();
 
+        step("Check that we got success page", () -> {
+            Thread.sleep(10000);
+            Assertions.assertEquals(SUCCESS_AFTER_MOBILE_TOP_UP, successAfterPaymentTitle.shouldBe(visible).getText());
+        });
     }
-
-
-
-
 
 
     // --------- TRANSFER MONEY FROM MAIN PAGE -----------
