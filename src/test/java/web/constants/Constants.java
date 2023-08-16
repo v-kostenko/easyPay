@@ -19,6 +19,11 @@ public class Constants {
     public static final String REGISTER_PAGE_HEADER = "Реєстрація";
     public static final String TOP_UP_MOBILE_MORE_THAN_1_UA_ERROR_MESSAGE = "Значення має бути більше ніж 1.00";
     public static final String TOP_UP_MOBILE_LESS_THAN_4999_99_UA_ERROR_MESSAGE = "Значення має бути менше ніж 4999.99";
+    public static final String TOP_UP_MOBILE_PAGE_MAT_HINT = "від 1.00 до 4,999.99 грн за один переказ";
+    public static final String ADVICE_DEFAULT_TITLE = "Як швидше сплачувати потрібні послуги?";
+    public static final String ADVICE_DEFAULT_TEXT = "Заощаджуй свій час на заповненні реквізитів!";
+    public static final String ADD_CARD_TEXT = "Додай картку";
+    public static final String ADVICE_CREATE_TEMPLATE = "Створи шаблон платежу";
 
 
 

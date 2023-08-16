@@ -43,16 +43,18 @@ public class MainPageSteps {
     }
 
     @Step("Click top-up submit button")
-    public static void clickTopUpSubmitButton() throws InterruptedException {
-        int counter = 0;
-        do{
-            mainPageTopUpMobileSubmitButton.shouldBe(visible).click();
-            Thread.sleep(1000);
-            counter++; // перепроверить
-            if (counter == 5) {
-                break;
-            }
-        } while (topUpMobileHeader.isDisplayed());
+    public static void clickTopUpSubmitButton() {
+        mainPageTopUpMobileSubmitButton.shouldBe(visible).click();
+
+//        int counter = 0;
+//        do{
+//            mainPageTopUpMobileSubmitButton.shouldBe(visible).click();
+//            Thread.sleep(1000);
+//            counter++; // перепроверить
+//            if (counter == 5) {
+//                break;
+//            }
+//        } while (topUpMobileHeader.isDisplayed());
 
 //        while (topUpMobileHeader.isDisplayed()) {
 //            mainPageTopUpMobileSubmitButton.shouldBe(visible).click();

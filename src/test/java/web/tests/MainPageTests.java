@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.*;
 import static web.pageObjects.MainPage.sideMenu;
-import static web.pageObjects.TopUpMobilePage.serviceHeroName;
+import static web.pageObjects.TopUpMobilePage.*;
 import static web.steps.MainPageSteps.*;
 import static web.steps.TopUpMobileSteps.*;
 
@@ -76,8 +76,8 @@ public class MainPageTests extends BaseTestWeb {
         }
     }
 
-    //    ----------- TOP-UP MOBILE FROM MAIN PAGE ------------------
 
+    //    ----------- TOP-UP MOBILE FROM MAIN PAGE ------------------
     @Test
     @DisplayName("Check It is not in compliance with the rule")
     @Owner("Volodymyr Kostenko")
@@ -120,7 +120,7 @@ public class MainPageTests extends BaseTestWeb {
         clickTopUpSubmitButton();
         inputAmountToTopUpMobileField("0");
         step("Click somewhere to get error message", () -> {
-            serviceHeroName.click();
+            topUpMobileServiceHeroName.click();
         });
         step("Check error message and state 'Submit' button", () -> {
             Assertions.assertEquals(TOP_UP_MOBILE_MORE_THAN_1_UA_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
@@ -129,7 +129,7 @@ public class MainPageTests extends BaseTestWeb {
     }
 
     @Test
-    @DisplayName("Try to top-up mobile more than 4 999.99 UA")
+    @DisplayName("Try to top-up mobile more than 4 999.99 UA. Unlogged user.")
     @Owner("Volodymyr Kostenko")
     public void topUpMobileInputMoreThan4999UaToAmountField() throws InterruptedException {
         inputPhoneForTopUp("80958872559");
@@ -137,7 +137,7 @@ public class MainPageTests extends BaseTestWeb {
         clickTopUpSubmitButton();
         inputAmountToTopUpMobileField("5000");
         step("Click somewhere to get error message", () -> {
-            serviceHeroName.click();
+            topUpMobileServiceHeroName.click();
         });
         step("Check error message and state 'Submit' button", () -> {
             Assertions.assertEquals(TOP_UP_MOBILE_LESS_THAN_4999_99_UA_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
@@ -145,9 +145,57 @@ public class MainPageTests extends BaseTestWeb {
         });
     }
 
+    @Test
+    @DisplayName("Check all elements presence on the top-up mobile page")
+    @Owner("Volodymyr Kostenko")
+    public void topUpMobilePageCheckPresenceOfAllElements() throws InterruptedException {
+        inputPhoneForTopUp("80958872559");
+        Thread.sleep(2000);
+        clickTopUpSubmitButton();
+
+        Assertions.assertEquals(TOP_UP_MOBILE_PAGE_MAT_HINT, getTopUpMobilePageMatHintText());
+        step("Check that top-up mobile service icon is displayed", () -> {
+            Assertions.assertTrue(topUpMobileServiceIcon.isDisplayed());
+        });
+        step("Check that service title is displayed", () -> {
+            Assertions.assertTrue(topUpMobileServiceTitle.getText().startsWith("Поповнення рахунку"));
+        });
+        step("Check advice default title", () -> {
+            Assertions.assertEquals(ADVICE_DEFAULT_TITLE, topUpAdviceDefaultTitle.getText());
+        });
+        step("Check advice default text", () -> {
+            Assertions.assertEquals(ADVICE_DEFAULT_TEXT, topUpAdviceDefaultText.getText());
+        });
+        step("Check add card text", ()->{
+            Assertions.assertEquals(ADD_CARD_TEXT, topUpAdviceAddCardText.getText());
+        });
+        step("Check add advice create template text", ()->{
+            Assertions.assertEquals(ADVICE_CREATE_TEMPLATE, topUpAdviceAdviceTemplateText.getText());
+        });
+        // Register icon
+        // RegisterLink redirect
+        // Add cart icon
+        // create template icon
+    }
+
+    @Test
+    public void topUp() throws InterruptedException {
+        inputPhoneForTopUp("80958872559");
+        Thread.sleep(2000);
+        clickTopUpSubmitButton();
+
+        inputAmountToTopUpMobileField("1");
+        topUpMobilePageClickSubmitButton();
+
+
+    }
+
+
+
+
+
 
     // --------- TRANSFER MONEY FROM MAIN PAGE -----------
-
     @Test
     @DisplayName("Check error messages c2c transfer money")
     @Owner("Volodymyr Kostenko")
