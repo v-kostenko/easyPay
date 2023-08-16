@@ -14,10 +14,11 @@ public abstract class BaseTestWeb {
 
     @BeforeAll
     public static void setUp(){
+       // Configuration.headless = true; // Не открывать физически браузер
         Configuration.timeout = 10000;
         Configuration.browser = "firefox";
-        Configuration.baseUrl = "https://dev.easypay.ua/ua";
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true) );
+        Configuration.baseUrl = "https://easypay.ua/ua";
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
 

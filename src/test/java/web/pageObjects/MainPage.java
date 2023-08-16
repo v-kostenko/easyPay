@@ -3,9 +3,6 @@ package web.pageObjects;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
@@ -29,8 +26,10 @@ public class MainPage {
 
     public static SelenideElement topUpMobileHeader = $x("//div[contains(@class,'mobile-topup')]//h2");
     public static SelenideElement topUpPhoneInput = $x("//input[@id='topup-phone']");
-    public static SelenideElement topUpSubmitButton = $x("//button[@id='home-topup-unique']");
+    public static SelenideElement mainPageTopUpMobileSubmitButton = $x("//button[@id='home-topup-unique']");
     public static SelenideElement topUpErrorMessage = $x("//div[contains(@class,'topup__phone')]//span[contains(@class,'field-error')]");
+
+    public static SelenideElement transfersLink = $x("//a[@class='menu__link']");
 
 
 }

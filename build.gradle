@@ -10,7 +10,7 @@ repositories {
 
 def allureVersion = "2.17.3",
     selenideVersion = "6.5.0",
-    junitVersion = "5.8.2"
+    junitVersion = "5.9.2"
 
 //--------------------------------allure for JUNIT
 allure {
@@ -52,14 +52,25 @@ tasks.withType(Test) {
     useJUnitPlatform() // use junit for task
 
 //--------------------------------------------------------------------------------------->For parallel tests
-    if (System.getProperty("threads") != null && System.getProperty("threads") != 0) {
+//    if (System.getProperty("threads") != null && System.getProperty("threads") != 0) {
+//        systemProperties += [
+//                'junit.jupiter.execution.parallel.enabled'                   : true,
+//                'junit.jupiter.execution.parallel.mode.default'              : 'concurrent',
+//                'junit.jupiter.execution.parallel.mode.classes.default'      : 'concurrent',
+//                'junit.jupiter.execution.parallel.config.strategy'           : 'fixed',
+//                'junit.jupiter.execution.parallel.config.fixed.max-pool-size': 5,//<------ System.getProperty("threads").toInteger()
+//                'junit.jupiter.execution.parallel.config.fixed.parallelism'  : System.getProperty("threads").toInteger()
+//        ]
+//    }
+
+    if (System.getProperty("threads") != null) {
         systemProperties += [
-                'junit.jupiter.execution.parallel.enabled'                 : true,
-                'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
-                'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
-                'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
-                'junit.jupiter.execution.parallel.config.fixed.max-pool-size': System.getProperty("threads").toInteger(),//<------
-                'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
+                'junit.jupiter.execution.parallel.enabled' : true,
+                'junit.jupiter.execution.parallel.mode.default' : 'concurrent',
+                'junit.jupiter.execution.parallel.mode.classes.default' : 'concurrent',
+                'junit.jupiter.execution.parallel.config.strategy' : 'fixed',
+                'junit.jupiter.execution.parallel.config.fixed.max-pool-size': System.getProperty("threads").toInteger(),
+                'junit.jupiter.execution.parallel.config.fixed.parallelism' : System.getProperty("threads").toInteger()
         ]
     }
 
@@ -85,6 +96,11 @@ tasks.register('web', Test) {
     useJUnitPlatform {
         includeTags 'web'
     }
+    retry{
+        maxRetries = 2
+        maxFailures = 20
+        failOnPassedAfterRetry = true
+    }
 }
 tasks.register('mobile', Test) {
     useJUnitPlatform {
@@ -97,14 +113,13 @@ tasks.register('api', Test) {
     }
 }
 
-tasks.register('simpletest', Test) {
-    useJUnitPlatform {
-        includeTags 'simpletest'
-    }
-}
-
 tasks.register('login', Test) {
     useJUnitPlatform {
         includeTags 'login'
+    }
+    retry{
+        maxRetries = 2
+        maxFailures = 20
+        failOnPassedAfterRetry = true
     }
 }

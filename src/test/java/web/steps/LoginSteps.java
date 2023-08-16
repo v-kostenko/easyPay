@@ -34,8 +34,13 @@ public class LoginSteps {
 
     @Step("Click header login button")
     public static void clickHeaderLoginButton() {
+        int counter = 0;
         while (!loginFormTitle.isDisplayed()) {
             headerLoginButton.shouldBe(Condition.visible).click();
+            counter++; // перепроверить
+            if (counter == 5) {
+                break;
+            }
         }
     }
 
@@ -75,11 +80,9 @@ public class LoginSteps {
     }
 
     @Step("Click 'Google' auth button")
-    public static void clickGoogleAuthButton(){
+    public static void clickGoogleAuthButton() {
         googleAuthButton.shouldBe(visible).click();
     }
-
-
 
 
 }

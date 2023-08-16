@@ -1,5 +1,6 @@
 package web.tests;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.*;
 import static web.pageObjects.PaymentsPage.getProfileHeaderTitleOnPaymentsPage;
+import static web.pageObjects.PaymentsPage.profileHeaderTitle;
 import static web.steps.LoginSteps.*;
 import static web.steps.RegistrationSteps.getRegistrationPageHeader;
 import static web.steps.RestoreSteps.getRestorePageHeader;
@@ -34,6 +36,7 @@ public class LoginTests extends BaseTestWeb {
         successLogin(PHONE, PASSWORD);
         step("Check that we got the PaymentsPage", () -> {
             Assertions.assertEquals(PAYMENT_TITLE, getProfileHeaderTitleOnPaymentsPage(), "Don't find Payment page title");
+            // profileHeaderTitle.shouldHave(Condition.text(PAYMENT_TITLE + "dd"));
         });
     }
 

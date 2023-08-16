@@ -17,6 +17,9 @@ public class Constants {
     public static final String TOP_UP_MOBILE_HEADER = "Поповнення мобільного";
     public static final String RESTORE_PAGE_HEADER = "Відновлення паролю";
     public static final String REGISTER_PAGE_HEADER = "Реєстрація";
+    public static final String TOP_UP_MOBILE_MORE_THAN_1_UA_ERROR_MESSAGE = "Значення має бути більше ніж 1.00";
+    public static final String TOP_UP_MOBILE_LESS_THAN_4999_99_UA_ERROR_MESSAGE = "Значення має бути менше ніж 4999.99";
+
 
 
 }

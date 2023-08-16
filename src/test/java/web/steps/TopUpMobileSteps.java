@@ -3,8 +3,7 @@ package web.steps;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
-import static web.pageObjects.MainPage.topUpErrorMessage;
-import static web.pageObjects.TopUpMobilePage.amountField;
+import static web.pageObjects.TopUpMobilePage.*;
 
 public class TopUpMobileSteps {
 
@@ -15,8 +14,12 @@ public class TopUpMobileSteps {
 
     @Step("Top-Up mobile. Get error message")
     public static String getTopUpPhoneFieldErrorMessage() {
-        return topUpErrorMessage.shouldBe(Condition.visible).getText();
+        return fieldError.shouldBe(Condition.visible).getText();
     }
 
+    @Step("Get state submit button (Enable/Disable)")
+    public static boolean isTopUpMobilePageSubmitButtonEnable(){
+        return topUpMobilePageSubmitButton.isEnabled();
+    }
 
 }

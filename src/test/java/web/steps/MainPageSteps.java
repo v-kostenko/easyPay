@@ -19,6 +19,11 @@ public class MainPageSteps {
         return headerLogo.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Check that 'Transfers link' is displayed")
+    public static boolean isTransfersLinkDisplayed() {
+        return transfersLink.shouldBe(visible).isDisplayed();
+    }
+
     @Step("Search by IBAN")
     public static void searchByKeyWord(String keyWord) throws InterruptedException {
         while (!searchTagTitle.isDisplayed()) {
@@ -38,11 +43,29 @@ public class MainPageSteps {
     }
 
     @Step("Click top-up submit button")
-    public static void clickTopUpSubmitButton() {
-        topUpSubmitButton.shouldBe(visible).click();
-        if (topUpMobileHeader.isDisplayed()) {
-            topUpSubmitButton.shouldBe(visible).click();
-        }
+    public static void clickTopUpSubmitButton() throws InterruptedException {
+        int counter = 0;
+        do{
+            mainPageTopUpMobileSubmitButton.shouldBe(visible).click();
+            Thread.sleep(1000);
+            counter++; // перепроверить
+            if (counter == 5) {
+                break;
+            }
+        } while (topUpMobileHeader.isDisplayed());
+
+//        while (topUpMobileHeader.isDisplayed()) {
+//            mainPageTopUpMobileSubmitButton.shouldBe(visible).click();
+//            counter++; // перепроверить
+//            if (counter == 5) {
+//                break;
+//            }
+//        }
+    }
+
+    @Step("Click to transfers link")
+    public static void clickToTransfersLink() {
+        transfersLink.shouldBe(visible).click();
     }
 
 
