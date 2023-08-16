@@ -1,4 +1,4 @@
-name: Try to run SimpleTest class
+name: Try to run web tests
 
 on: workflow_dispatch # этот иветн значит, что мы его будем запускать в ручном режиме
 
@@ -14,7 +14,29 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
 
-      - run: ./gradlew clean simpletest
+      - run: ./gradlew clean web -Dthreads=6
+        # скачиваем историю тестов
+      - uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+      # генерируем отчет
+      - uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_results: build/allure-results
+          allure_report: allure-report
+          allure_history: allure-history
+      # публикуем отчет
+      - uses: peaceiris/actions-gh-pages@v2
+        if: always()
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
 
 
 

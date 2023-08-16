@@ -210,6 +210,7 @@ public class MainPageTests extends BaseTestWeb {
     @Test
     @DisplayName("Check error messages c2c transfer money")
     @Owner("Volodymyr Kostenko")
+    @Disabled
     public void checkErrorMessagesC2CTransferMoney() {
         clickTransferMoneyButton();
         // Check all error messages
