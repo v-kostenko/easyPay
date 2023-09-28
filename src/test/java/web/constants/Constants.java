@@ -25,6 +25,7 @@ public class Constants {
     public static final String ADD_CARD_TEXT = "Додай картку";
     public static final String ADVICE_CREATE_TEMPLATE = "Створи шаблон платежу";
     public static final String SUCCESS_AFTER_MOBILE_TOP_UP = "Оплата пройшла успішно";
+    public static final String MAIN_PAGE_CVV_VALIDATION_ERROR_MESSAGE = "CVV: Обов'язково для заповнення";
 
 
 

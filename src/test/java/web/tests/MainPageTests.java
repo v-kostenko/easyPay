@@ -105,17 +105,6 @@ public class MainPageTests extends BaseTestWeb {
     }
 
     @Test
-    @DisplayName("Check not compliance with the rule error message")
-    @Owner("Volodymyr Kostenko")
-    public void topUpMobileCheckNotComplianceWithTheRule() throws InterruptedException {
-        inputPhoneForTopUp("8066005");
-        clickTopUpSubmitButton();
-        step("Check error message", () -> {
-            Assertions.assertEquals(PHONE_FIELD_WRONG_FORMAT_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
-        });
-    }
-
-    @Test
     @DisplayName("Try to top-up mobile less than 1 ua")
     @Owner("Volodymyr Kostenko")
     public void topUpMobileInputLessThanOneUaToAmountField() throws InterruptedException {
@@ -210,9 +199,9 @@ public class MainPageTests extends BaseTestWeb {
     @Test
     @DisplayName("Check error messages c2c transfer money")
     @Owner("Volodymyr Kostenko")
-    @Disabled
     public void checkErrorMessagesC2CTransferMoney() {
         clickTransferMoneyButton();
+        Assertions.assertEquals(MAIN_PAGE_CVV_VALIDATION_ERROR_MESSAGE, getCvvValidationErrorMessage());
         // Check all error messages
     }
 

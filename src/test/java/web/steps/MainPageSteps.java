@@ -21,7 +21,7 @@ public class MainPageSteps {
 
     @Step("Check that 'Transfers link' is displayed")
     public static boolean isTransfersLinkDisplayed() {
-        return transfersLink.shouldBe(visible).isDisplayed();
+        return headerTransfersLink.shouldBe(visible).isDisplayed();
     }
 
     @Step("Search by IBAN")
@@ -67,7 +67,12 @@ public class MainPageSteps {
 
     @Step("Click to transfers link")
     public static void clickToTransfersLink() {
-        transfersLink.shouldBe(visible).click();
+        headerTransfersLink.shouldBe(visible).click();
+    }
+
+    @Step("Cvv validation error message")
+    public static String getCvvValidationErrorMessage() {
+        return mainPageCvvValidationErrorMessage.shouldBe(visible).getText();
     }
 
 

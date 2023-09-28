@@ -1,6 +1,7 @@
 package api.easyPayAuth.tests;
 
 import api.easyPayAuth.pojo.auth.AuthUser;
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +28,6 @@ public abstract class BaseTestApi {
 
     @BeforeEach
     public void desktopAuthorization() {
-        // Steps.desktopAuthorization();
         TOKEN = given().spec(requestSpecification).body(authUser)
                 .when().post(BASE_URL_TEST + "/api/auth/desktop")
                 .then().extract().jsonPath().getString("data.access_token");

@@ -6,6 +6,8 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
+    public static SelenideElement headerTransfersLink = $x("//a[@class='menu__link']");
+
     public static SelenideElement headerLoginButton = $x("//button[contains(@class,'header__sign-in')]");
     public static SelenideElement headerSignUpButton = $x("//button[contains(@class,'header__sign-up button')]");
     public static SelenideElement loginFormTitle = $x("//h2[contains(@class,'log-in_title show-for-large')]");
@@ -29,7 +31,8 @@ public class MainPage {
     public static SelenideElement mainPageTopUpMobileSubmitButton = $x("//button[@id='home-topup-unique']");
     public static SelenideElement topUpErrorMessage = $x("//div[contains(@class,'topup__phone')]//span[contains(@class,'field-error')]");
 
-    public static SelenideElement transfersLink = $x("//a[@class='menu__link']");
+    public static SelenideElement mainPageCvvValidationErrorMessage = $x("//div[@class='c2c-cvv-validation']//span");
+
 
 
 }
