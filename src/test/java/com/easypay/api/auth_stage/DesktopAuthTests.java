@@ -13,8 +13,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 @Tag("api")
-public class DesktopAuthTests {
+public class DesktopAuthTests extends BaseTestApiStage {
 
+    // TODO
     // Errors:
     // "NEED_TO_REAUTH" - if user is in cache, but device dont
     // "PASSWORD_CHECK_FAILED" - if pin and cached pin not equals
@@ -27,17 +28,6 @@ public class DesktopAuthTests {
     @DisplayName("Call 'auth/desktop' by registered user")
     @Owner("Volodymyr Kostenko")
     public void authDesktop() {
-        // ---------- Получить appId и pageId   ----------
-        Response createAppResponse = given().log().all()
-                .when().post("https://apistage.easypay.ua/api/system/createApp")
-                .then().log().all().statusCode(200)
-                .extract().response();
-
-        String appId = createAppResponse.jsonPath().getString("appId");
-        String pageId = createAppResponse.jsonPath().getString("pageId");
-        // String requestedSessionId = createAppResponse.jsonPath().getString("requestedSessionId");
-
-
         // ----------- Вызываем метод auth/desktop --------
         given().log().all()
                 .header("accept", "application/json")
@@ -45,8 +35,11 @@ public class DesktopAuthTests {
                 .header("PartnerKey", "easypay-v2-test")
                 .header("Content-Type", "application/json")
                 .header("AppId", appId)
+
                 .body(new UserPayload(PHONE, PASSWORD))
-                .when().post("https://authstage.easypay.ua/api/auth/desktop")
+
+                .when().post("api/auth/desktop")
+
                 .then().log().all()
                 .statusCode(200)
                 .body("data.access_token", not(isEmptyString()))
@@ -56,18 +49,7 @@ public class DesktopAuthTests {
     @Test
     @DisplayName("Check error handling 'INVALID_PASSWORD'")
     @Owner("Volodymyr Kostenko")
-    public void loginWithInvalidPassword(){
-        // ---------- Получить appId и pageId   ----------
-        Response createAppResponse = given().log().all()
-                .when().post("https://apistage.easypay.ua/api/system/createApp")
-                .then().log().all().statusCode(200)
-                .extract().response();
-
-        String appId = createAppResponse.jsonPath().getString("appId");
-        String pageId = createAppResponse.jsonPath().getString("pageId");
-        // String requestedSessionId = createAppResponse.jsonPath().getString("requestedSessionId");
-
-
+    public void loginWithInvalidPassword() {
         // ----------- Вызываем метод auth/desktop --------
         given().log().all()
                 .header("accept", "application/json")
@@ -75,8 +57,11 @@ public class DesktopAuthTests {
                 .header("PartnerKey", "easypay-v2-test")
                 .header("Content-Type", "application/json")
                 .header("AppId", appId)
+
                 .body(new UserPayload(PHONE, PASSWORD + "xxx"))
+
                 .when().post("https://authstage.easypay.ua/api/auth/desktop")
+
                 .then().log().all()
                 .statusCode(400)
                 .body("error.errorCode", equalTo("INVALID_PASSWORD"));
@@ -85,17 +70,7 @@ public class DesktopAuthTests {
     @Test
     @DisplayName("Check error handling 'INVALID_FORM_INPUT'")
     @Owner("Volodymyr Kostenko")
-    public void loginWithInvalidPhoneNumber(){
-        // ---------- Получить appId и pageId   ----------
-        Response createAppResponse = given().log().all()
-                .when().post("https://apistage.easypay.ua/api/system/createApp")
-                .then().log().all().statusCode(200)
-                .extract().response();
-
-        String appId = createAppResponse.jsonPath().getString("appId");
-        String pageId = createAppResponse.jsonPath().getString("pageId");
-        // String requestedSessionId = createAppResponse.jsonPath().getString("requestedSessionId");
-
+    public void loginWithInvalidPhoneNumber() {
 
         // ----------- Вызываем метод auth/desktop --------
         given().log().all()
@@ -115,16 +90,6 @@ public class DesktopAuthTests {
     @DisplayName("Check error handling 'CANT_CAST_APP_ID'")
     @Owner("Volodymyr Kostenko")
     public void cantCastAppId() {
-        // ---------- Получить appId и pageId   ----------
-        Response createAppResponse = given().log().all()
-                .when().post("https://apistage.easypay.ua/api/system/createApp")
-                .then().log().all().statusCode(200)
-                .extract().response();
-
-        String appId = createAppResponse.jsonPath().getString("appId");
-        String pageId = createAppResponse.jsonPath().getString("pageId");
-        // String requestedSessionId = createAppResponse.jsonPath().getString("requestedSessionId");
-
 
         given().log().all()
                 .header("accept", "application/json")
@@ -143,15 +108,6 @@ public class DesktopAuthTests {
     @DisplayName("Check error handling 'INVALID_PARTNERKEY'")
     @Owner("Volodymyr Kostenko")
     public void invalidPartnerKey() {
-        Response createAppResponse = given().log().all()
-                .when().post("https://apistage.easypay.ua/api/system/createApp")
-                .then().log().all().statusCode(200)
-                .extract().response();
-
-        String appId = createAppResponse.jsonPath().getString("appId");
-        String pageId = createAppResponse.jsonPath().getString("pageId");
-        // String requestedSessionId = createAppResponse.jsonPath().getString("requestedSessionId");
-
 
         given().log().all()
                 .header("accept", "application/json")
@@ -167,8 +123,10 @@ public class DesktopAuthTests {
     }
 
 
+    @Test
+    public void foo() {
 
-
+    }
 
 
 }

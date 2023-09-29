@@ -3,6 +3,7 @@ package com.easypay.api.auth_stage;
 import com.easypay.api.easyPayAuth.pojo.auth.AuthUser;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,31 +15,28 @@ public class BaseTestApiStage {
     protected String pageId = "";
     protected String requestedSessionId = "";
     protected String accessToken = "";
+    public CreateApp createApp;
     public static RequestSpecification specification;
+    public static final String BASE_URL_STAGE = "https://apistage.easypay.ua/";
 
 
     @BeforeEach
     public void setUp() {
-        Response createAppResponse = given()
-                .when().post("https://apistage.easypay.ua/api/system/createApp")
-                .then().statusCode(200)
-                .extract().response();
+        createApp();
 
-        appId = createAppResponse.jsonPath().getString("appId");
-        pageId = createAppResponse.jsonPath().getString("pageId");
-        // requestedSessionId = createAppResponse.jsonPath().getString("requestedSessionId");
-
-        generateToken();
-
-        specification = new RequestSpecBuilder()
-                .addHeader("Accept", "application/json")
-                .addHeader("PartnerKey", "easypay-v2-test")
-                .addHeader("locale", "UA")
-                .addHeader("koatuu", "8000000000")
-                .addHeader("AppId", appId)
-                .addHeader("PageId", pageId)
-                .addHeader("Authorization", "Bearer " + accessToken)
-                .build();
+//        generateToken();
+//
+//        specification = new RequestSpecBuilder()
+//                .setBaseUri(BASE_URL_STAGE)
+//                //.setContentType(ContentType.JSON)
+////                .addHeader("Accept", "application/json")
+////                .addHeader("PartnerKey", "easypay-v2-test")
+////                .addHeader("locale", "UA")
+////                .addHeader("koatuu", "8000000000")
+////                .addHeader("AppId", appId)
+////                .addHeader("PageId", pageId)
+////                .addHeader("Authorization", "Bearer " + accessToken)
+//                .build();
     }
 
     private void generateToken() {
@@ -55,6 +53,18 @@ public class BaseTestApiStage {
         accessToken = given().spec(requestSpecification).body(authUser)
                 .when().post("https://authstage.easypay.ua/api/auth/desktop")
                 .then().extract().jsonPath().getString("data.access_token");
+    }
+
+
+    private void createApp() {
+        createApp = given()
+                .when().post("https://apistage.easypay.ua/api/system/createApp")
+                .then().statusCode(200)
+                .extract().as(CreateApp.class);
+
+        appId = createApp.getAppId();
+        pageId = createApp.getPageId();
+        requestedSessionId = createApp.getRequestedSessionId();
     }
 
 
