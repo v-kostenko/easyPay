@@ -92,9 +92,9 @@ test {
     }
 }
 
-tasks.register('web', Test) {
+tasks.register('com.easypay.web', Test) {
     useJUnitPlatform {
-        includeTags 'web'
+        includeTags 'com.easypay.web'
     }
     retry{
         maxRetries = 2
@@ -107,9 +107,9 @@ tasks.register('mobile', Test) {
         includeTags 'mobile'
     }
 }
-tasks.register('api', Test) {
+tasks.register('com.easypay.api', Test) {
     useJUnitPlatform {
-        includeTags 'api'
+        includeTags 'com.easypay.api'
     }
 }
 
