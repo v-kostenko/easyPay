@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 
-@Tag("api")
+
 public class ProfileTest extends BaseTestApi {
 
     @Test

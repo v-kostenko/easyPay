@@ -2,7 +2,7 @@ package com.easypay.api.auth_stage.payloads;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UserPayload{
+public class AuthDesktop {
 
 	@JsonProperty("password")
 	private String password;
@@ -10,10 +10,10 @@ public class UserPayload{
 	@JsonProperty("phone")
 	private String phone;
 
-	public UserPayload() {
+	public AuthDesktop() {
 	}
 
-	public UserPayload(String phone, String password) {
+	public AuthDesktop(String phone, String password) {
 		this.password = password;
 		this.phone = phone;
 	}

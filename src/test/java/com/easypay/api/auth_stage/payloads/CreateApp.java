@@ -1,4 +1,4 @@
-package com.easypay.api.auth_stage;
+package com.easypay.api.auth_stage.payloads;
 
 public class CreateApp {
     private String logoPath;

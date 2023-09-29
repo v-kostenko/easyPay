@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-@Tag("api")
-@Tag("regression")
+
 public class ContactsTest extends BaseTestApi {
 
     @Test

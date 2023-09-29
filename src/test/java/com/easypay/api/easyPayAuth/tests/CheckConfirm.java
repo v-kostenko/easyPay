@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-@Tag("api")
+
 public class CheckConfirm extends BaseTestApi {
     private final String PATH = "/api/check/confirm";
 

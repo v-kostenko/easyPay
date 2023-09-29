@@ -1,8 +1,8 @@
 package com.easypay.api.auth_stage;
 
-import com.easypay.api.auth_stage.payloads.UserPayload;
+import com.easypay.api.auth_stage.payloads.AuthDesktop;
 import io.qameta.allure.Owner;
-import io.restassured.response.Response;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,6 +14,7 @@ import static org.hamcrest.Matchers.*;
 
 @Tag("api")
 public class DesktopAuthTests extends BaseTestApiStage {
+    private final String PATH = "/api/auth/desktop";
 
     // TODO
     // Errors:
@@ -28,17 +29,9 @@ public class DesktopAuthTests extends BaseTestApiStage {
     @DisplayName("Call 'auth/desktop' by registered user")
     @Owner("Volodymyr Kostenko")
     public void authDesktop() {
-        // ----------- Вызываем метод auth/desktop --------
-        given().log().all()
-                .header("accept", "application/json")
-                .header("Locale", "UA")
-                .header("PartnerKey", "easypay-v2-test")
-                .header("Content-Type", "application/json")
-                .header("AppId", appId)
-
-                .body(new UserPayload(PHONE, PASSWORD))
-
-                .when().post("api/auth/desktop")
+        given().spec(specification)
+                .body(new AuthDesktop(PHONE, PASSWORD))
+                .when().post(BASE_URL + PATH)
 
                 .then().log().all()
                 .statusCode(200)
@@ -50,17 +43,9 @@ public class DesktopAuthTests extends BaseTestApiStage {
     @DisplayName("Check error handling 'INVALID_PASSWORD'")
     @Owner("Volodymyr Kostenko")
     public void loginWithInvalidPassword() {
-        // ----------- Вызываем метод auth/desktop --------
-        given().log().all()
-                .header("accept", "application/json")
-                .header("Locale", "UA")
-                .header("PartnerKey", "easypay-v2-test")
-                .header("Content-Type", "application/json")
-                .header("AppId", appId)
-
-                .body(new UserPayload(PHONE, PASSWORD + "xxx"))
-
-                .when().post("https://authstage.easypay.ua/api/auth/desktop")
+        given().spec(specification)
+                .body(new AuthDesktop(PHONE, PASSWORD + "xxx"))
+                .when().post(BASE_URL + PATH)
 
                 .then().log().all()
                 .statusCode(400)
@@ -71,16 +56,10 @@ public class DesktopAuthTests extends BaseTestApiStage {
     @DisplayName("Check error handling 'INVALID_FORM_INPUT'")
     @Owner("Volodymyr Kostenko")
     public void loginWithInvalidPhoneNumber() {
+        given().spec(specification)
+                .body(new AuthDesktop("38066", PASSWORD))
+                .when().post(BASE_URL + PATH)
 
-        // ----------- Вызываем метод auth/desktop --------
-        given().log().all()
-                .header("accept", "application/json")
-                .header("Locale", "UA")
-                .header("PartnerKey", "easypay-v2-test")
-                .header("Content-Type", "application/json")
-                .header("AppId", appId)
-                .body(new UserPayload("38066", PASSWORD))
-                .when().post("https://authstage.easypay.ua/api/auth/desktop")
                 .then().log().all()
                 .statusCode(400)
                 .body("error.errorCode", equalTo("INVALID_FORM_INPUT"));
@@ -90,15 +69,10 @@ public class DesktopAuthTests extends BaseTestApiStage {
     @DisplayName("Check error handling 'CANT_CAST_APP_ID'")
     @Owner("Volodymyr Kostenko")
     public void cantCastAppId() {
+        given().spec(specification).header("AppId", appId + "xxx")
+                .body(new AuthDesktop(PHONE, PASSWORD))
+                .when().post(BASE_URL + PATH)
 
-        given().log().all()
-                .header("accept", "application/json")
-                .header("Locale", "UA")
-                .header("PartnerKey", "easypay-v2-test")
-                .header("Content-Type", "application/json")
-                .header("AppId", appId + "xxx")
-                .body(new UserPayload(PHONE, PASSWORD))
-                .when().post("https://authstage.easypay.ua/api/auth/desktop")
                 .then().log().all()
                 .statusCode(400)
                 .body("error.errorCode", equalTo("CANT_CAST_APP_ID"));
@@ -108,15 +82,10 @@ public class DesktopAuthTests extends BaseTestApiStage {
     @DisplayName("Check error handling 'INVALID_PARTNERKEY'")
     @Owner("Volodymyr Kostenko")
     public void invalidPartnerKey() {
+        given().spec(specification)
+                .body(new AuthDesktop(PHONE, PASSWORD))
+                .when().post(BASE_URL + PATH)
 
-        given().log().all()
-                .header("accept", "application/json")
-                .header("Locale", "UA")
-                .header("PartnerKey", "easypay-v2-test" + "xxx")
-                .header("Content-Type", "application/json")
-                .header("AppId", appId)
-                .body(new UserPayload(PHONE, PASSWORD))
-                .when().post("https://authstage.easypay.ua/api/auth/desktop")
                 .then().log().all()
                 .statusCode(400)
                 .body("error.errorCode", equalTo("INVALID_PARTNERKEY"));

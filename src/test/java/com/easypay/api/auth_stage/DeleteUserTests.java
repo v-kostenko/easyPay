@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 @Tag("api")
-public class DeleteUser extends BaseTestApiStage {
+public class DeleteUserTests extends BaseTestApiStage {
 
     @Test
     @DisplayName("Check that we can delete user")

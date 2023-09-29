@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 
-@Tag("api")
+
 public class AuthTerminal extends BaseTestApi {
 
     private static final String PATH = "/api/auth/terminal";

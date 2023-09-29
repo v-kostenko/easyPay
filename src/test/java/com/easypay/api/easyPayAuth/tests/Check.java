@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-@Tag("api")
+
 public class Check extends BaseTestApi{
     private final String PATH = "/api/check";
 
