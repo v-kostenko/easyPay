@@ -2,7 +2,6 @@ package api.auth_stage;
 
 import api.auth_stage.payloads.AuthDesktop;
 import api.auth_stage.payloads.CreateApp;
-import api.easyPayAuth.pojo.auth.AuthUser;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
@@ -29,7 +28,7 @@ public class BaseTestApiStage {
     public void setUp() {
         createApp();
         setRequestSpecification();
-        generateToken();
+        generateAccessToken();
     }
 
     private void createApp() {
@@ -78,7 +77,7 @@ public class BaseTestApiStage {
 
     }
 
-    private void generateToken() {
+    private void generateAccessToken() {
         AuthDesktop authDesktop = new AuthDesktop(PHONE, PASSWORD);
 
         accessToken = given().spec(specification).body(authDesktop)

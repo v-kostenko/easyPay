@@ -1,11 +1,11 @@
 package api.auth_stage;
 
+import api.auth_stage.payloads.DeleteReasons;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -21,29 +21,25 @@ public class DeleteUserTests extends BaseTestApiStage {
     public void deleteUserCheckWithoutEasyCardAndNoEmoney() {
         // Обліковий запис не можна видалити якщо під нього відкрито карту EasyCard
         // або на рахунках електронних грошей є баланс.
-        given().spec(specification)
-                .when().get("https://authstage.easypay.ua/api/users/delete/check")
-                .then().statusCode(200)
+        given().spec(specification).header("Authorization", "Bearer " + accessToken)
+                .when().get(BASE_URL + "/api/users/delete/check")
+                .then().log().all()
+                .statusCode(200)
                 .body("data", equalTo(null));
     }
 
     @Test
+    @DisplayName("Get delete reasons")
     @Owner("Volodymyr Kostenko")
     public void getDeleteReasons() {
-        given().spec(specification)
-                .when().get("https://authstage.easypay.ua/api/users/delete/reasons")
-                .then().statusCode(200);
+        List<DeleteReasons> deleteReasonsList = given().spec(specification)
+                .when().get(BASE_URL + "/api/users/delete/reasons")
+                .then().log().all()
+                .statusCode(200)
+                .extract().jsonPath().getList("data.reasons");
+        Assertions.assertEquals(5, deleteReasonsList.size());
     }
 
-    @Test
-    @Disabled
-    public void deleteUser(){
-        // GET /api/users /delete/reasons
-
-        // delete
-        given().spec(specification)
-                .when().delete("https://authstage.easypay.ua/api/users/delete");
-    }
 
 
 }

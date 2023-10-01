@@ -9,13 +9,14 @@ import static io.restassured.RestAssured.given;
 
 @Tag("api")
 public class ProfileTests extends BaseTestApiStage{
+    private static final String PATH = "/api/users/profile";
 
     @Test
     @DisplayName("Call method as not authorised user")
     @Owner("Volodymyr Kostenko")
     public void getProfileNotAuthorisedUser(){
         given().spec(specification)
-                .when().get("https://authstage.easypay.ua/api/users/profile")
+                .when().get(BASE_URL + PATH)
                 .then().log().all()
                 .statusCode(401);
     }
@@ -25,7 +26,7 @@ public class ProfileTests extends BaseTestApiStage{
     @Owner("Volodymyr Kostenko")
     public void getProfileAuthorisedUser(){
         given().spec(specification).header("Authorization", "Bearer " + accessToken)
-                .when().get("https://authstage.easypay.ua/api/users/profile")
+                .when().get(BASE_URL + PATH)
                 .then().log().all()
                 .statusCode(200);
     }
