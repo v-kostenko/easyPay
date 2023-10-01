@@ -1,4 +1,4 @@
-name: Try to run com.easypay.web tests
+name: Try to run web tests
 
 on: workflow_dispatch # этот иветн значит, что мы его будем запускать в ручном режиме
 
@@ -14,7 +14,7 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
 
-      - run: ./gradlew clean com.easypay.web -Dthreads=6
+      - run: ./gradlew clean web -Dthreads=6
         # скачиваем историю тестов
       - uses: actions/checkout@v2
         if: always()
