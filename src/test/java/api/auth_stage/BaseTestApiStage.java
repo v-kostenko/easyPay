@@ -21,7 +21,8 @@ public class BaseTestApiStage {
     public static RequestSpecification specification;
     public static RequestSpecification specificationNoAppId;
     public static RequestSpecification specificationNoPartnerKey;
-    protected String BASE_URL = "https://authstage.easypay.ua";
+    public static RequestSpecification specificationPtksNoAppId;
+    protected String BASE_URL = "https://auth.easypay.ua";
 
 
     @BeforeEach
@@ -33,7 +34,7 @@ public class BaseTestApiStage {
 
     private void createApp() {
         createApp = given()
-                .when().post("https://apistage.easypay.ua/api/system/createApp")
+                .when().post("https://api.easypay.ua/api/system/createApp")
                 .then().statusCode(200)
                 .extract().as(CreateApp.class);
 
@@ -65,6 +66,17 @@ public class BaseTestApiStage {
                 .log(LogDetail.ALL)
                 .build();
 
+        specificationPtksNoAppId =  new RequestSpecBuilder()
+                .addHeader("Accept", "application/json")
+                .addHeader("PartnerKey", "easypay-ptks")
+                .addHeader("locale", "UA")
+                .addHeader("koatuu", "8000000000")
+                .addHeader("AppId", appId + "xxx")
+                .addHeader("PageId", pageId)
+                .addHeader("Content-Type", "application/json")
+                .log(LogDetail.ALL)
+                .build();
+
         specificationNoPartnerKey = new RequestSpecBuilder()
                 .addHeader("Accept", "application/json")
                 .addHeader("locale", "UA")
@@ -81,7 +93,7 @@ public class BaseTestApiStage {
         AuthDesktop authDesktop = new AuthDesktop(PHONE, PASSWORD);
 
         accessToken = given().spec(specification).body(authDesktop)
-                .when().post("https://authstage.easypay.ua/api/auth/desktop")
+                .when().post("https://auth.easypay.ua/api/auth/desktop")
                 .then().extract().jsonPath().getString("data.access_token");
     }
 

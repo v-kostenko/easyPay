@@ -13,7 +13,7 @@ public abstract class BaseTestWeb {
 
     @BeforeAll
     public static void setUp(){
-       // Configuration.headless = true; // Не открывать физически браузер
+        // Configuration.headless = true; // true - Не открывать физически браузер
         Configuration.timeout = 10000;
         Configuration.browser = "firefox";
         Configuration.baseUrl = "https://easypay.ua/ua";

@@ -1,6 +1,7 @@
 package api.auth_stage;
 
 import api.auth_stage.payloads.DeleteReasons;
+import api.auth_stage.payloads.DeleteUser;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
@@ -12,7 +13,9 @@ import static org.hamcrest.Matchers.equalTo;
 
 @Tag("api")
 public class DeleteUserTests extends BaseTestApiStage {
-    private static final String PATH = "";
+    private static final String PATH_DELETE_CHECK = "/api/users/delete/check";
+    private static final String PATH_DELETE_REASONS = "/api/users/delete/reasons";
+    private static final String PATH_DELETE = "/api/users/delete";
 
     @Test
     @DisplayName("Check that we can delete user")
@@ -22,7 +25,7 @@ public class DeleteUserTests extends BaseTestApiStage {
         // Обліковий запис не можна видалити якщо під нього відкрито карту EasyCard
         // або на рахунках електронних грошей є баланс.
         given().spec(specification).header("Authorization", "Bearer " + accessToken)
-                .when().get(BASE_URL + "/api/users/delete/check")
+                .when().get(BASE_URL + PATH_DELETE_CHECK)
                 .then().log().all()
                 .statusCode(200)
                 .body("data", equalTo(null));
@@ -33,11 +36,21 @@ public class DeleteUserTests extends BaseTestApiStage {
     @Owner("Volodymyr Kostenko")
     public void getDeleteReasons() {
         List<DeleteReasons> deleteReasonsList = given().spec(specification)
-                .when().get(BASE_URL + "/api/users/delete/reasons")
+                .when().get(BASE_URL + PATH_DELETE_REASONS)
                 .then().log().all()
                 .statusCode(200)
                 .extract().jsonPath().getList("data.reasons");
         Assertions.assertEquals(5, deleteReasonsList.size());
+    }
+
+    @Test
+    @Owner("Volodymyr Kostenko")
+    public void deleteUser(){
+        given().spec(specification).header("Authorization", "Bearer " + accessToken)
+                .body(new DeleteUser(3, "test", "000000"))
+                .when().delete(BASE_URL + PATH_DELETE)
+                .then().log().all()
+                .statusCode(200);
     }
 
 

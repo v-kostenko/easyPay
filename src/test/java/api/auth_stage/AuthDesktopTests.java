@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 @Tag("api")
-public class DesktopAuthTests extends BaseTestApiStage {
+public class AuthDesktopTests extends BaseTestApiStage {
     private static final String PATH = "/api/auth/desktop";
 
     // TODO
@@ -89,6 +89,8 @@ public class DesktopAuthTests extends BaseTestApiStage {
                 .statusCode(400)
                 .body("error.errorCode", equalTo("INVALID_PARTNERKEY"));
     }
+
+
 
 
 }
