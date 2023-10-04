@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
-import static web.constants.Constants.PHONE_FIELD_MANDATORY_ERROR_MESSAGE;
+import static web.constants.Constants.REGISTER_PAGE_PHONE_FIELD_MANDATORY_ERROR_MESSAGE;
 import static web.constants.Constants.PHONE_FIELD_WRONG_FORMAT_ERROR_MESSAGE;
 import static web.steps.RegistrationSteps.*;
 
@@ -21,7 +21,9 @@ public class RegistrationTest extends BaseTestWeb {
     @DisplayName("Check all elements presence")
     @Owner("Volodymyr Kostenko")
     public void checkAllElementsPresence() {
+        // TODO Треба перевіряти "Переваги реєстрації"?
         // перевірити присутність всіх елементів
+        //
     }
 
     @Test
@@ -31,7 +33,7 @@ public class RegistrationTest extends BaseTestWeb {
         clickOnTheInputField();
         clickOnThePhonePrefix();
         step("Check error message", () -> {
-            Assertions.assertEquals(PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getErrorMessageText());
+            Assertions.assertEquals(REGISTER_PAGE_PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getErrorMessageText());
         });
     }
 

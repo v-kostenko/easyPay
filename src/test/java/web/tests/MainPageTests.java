@@ -99,7 +99,7 @@ public class MainPageTests extends BaseTestWeb {
     public void topUpMobileCheckMandatoryErrorMessage() throws InterruptedException {
         clickTopUpSubmitButton();
         step("Check error message", () -> {
-            Assertions.assertEquals(PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
+            Assertions.assertEquals(REGISTER_PAGE_PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
         });
     }
 

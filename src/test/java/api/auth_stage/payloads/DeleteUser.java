@@ -22,6 +22,10 @@ public class DeleteUser{
 		this.reasonId = reasonId;
 	}
 
+	public DeleteUser(int reasonId){
+		this.reasonId = reasonId;
+	}
+
 	public String getConfirmCode(){
 		return confirmCode;
 	}

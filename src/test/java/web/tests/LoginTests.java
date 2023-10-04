@@ -72,7 +72,7 @@ public class LoginTests extends BaseTestWeb {
         clickHeaderLoginButton();
         clickAuthLoginButton();
         step("Check error messages for phone field and password field", () -> {
-            Assertions.assertEquals(PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getPhoneErrorMessage());
+            Assertions.assertEquals(REGISTER_PAGE_PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getPhoneErrorMessage());
             Assertions.assertEquals(PASSWORD_FIELD_ERROR_MESSAGE, getPasswordErrorMessage());
         });
     }
@@ -100,11 +100,16 @@ public class LoginTests extends BaseTestWeb {
     }
 
     @Test
+    @DisplayName("Check Google Auth button")
+    @Owner("Volodymyr Kostenko")
+    @Disabled
     public void checkGoogleAuth() {
         clickHeaderLoginButton();
         clickGoogleAuthButton();
-        // Що тут перевірити? Відкривається сторінка Гугл.
+        // TODO Що тут перевірити? Відкривається сторінка Гугл.
     }
+
+    // TODO Как сделать чтоб теже тесты проверить на разных размерах браузера и мобаил моде?
 
 
 }

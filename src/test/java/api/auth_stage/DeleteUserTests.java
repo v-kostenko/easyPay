@@ -18,7 +18,7 @@ public class DeleteUserTests extends BaseTestApiStage {
     private static final String PATH_DELETE = "/api/users/delete";
 
     @Test
-    @DisplayName("Check that we can delete user")
+    @DisplayName("Check that we can delete user without EasyCard and E-money")
     @Description("Метод для перевірки можливості видалення облікового запису")
     @Owner("Volodymyr Kostenko")
     public void deleteUserCheckWithoutEasyCardAndNoEmoney() {
@@ -35,6 +35,7 @@ public class DeleteUserTests extends BaseTestApiStage {
     @DisplayName("Get delete reasons")
     @Owner("Volodymyr Kostenko")
     public void getDeleteReasons() {
+        // TODO Как тут проверить все объекты?
         List<DeleteReasons> deleteReasonsList = given().spec(specification)
                 .when().get(BASE_URL + PATH_DELETE_REASONS)
                 .then().log().all()
@@ -44,13 +45,16 @@ public class DeleteUserTests extends BaseTestApiStage {
     }
 
     @Test
+    @DisplayName("Check error handling 'INVALID_FORM_INPUT'")
+    @Description("No comment is required for the reason for deletion")
     @Owner("Volodymyr Kostenko")
     public void deleteUser(){
         given().spec(specification).header("Authorization", "Bearer " + accessToken)
-                .body(new DeleteUser(3, "test", "000000"))
+                .body(new DeleteUser(3))
                 .when().delete(BASE_URL + PATH_DELETE)
                 .then().log().all()
-                .statusCode(200);
+                .statusCode(400)
+                .body("error.errorCode", equalTo("INVALID_FORM_INPUT"));
     }
 
 
