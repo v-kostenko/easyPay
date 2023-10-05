@@ -1,4 +1,4 @@
-name: Try to run web tests
+name: Try to run api tests
 
 on: workflow_dispatch # этот иветн значит, что мы его будем запускать в ручном режиме
 
