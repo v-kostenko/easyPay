@@ -14,7 +14,7 @@ jobs:
           distribution: 'zulu'
           java-version: '11'
 
-      - run: ./gradlew clean web -Dthreads=5
+      - run: ./gradlew clean api
         # скачиваем историю тестов
       - uses: actions/checkout@v2
         if: always()
