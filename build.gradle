@@ -74,6 +74,9 @@ tasks.withType(Test) {
         ]
     }
 
+
+
+
 //--------------------------------------------------------------------------------------->Short logging for tests
     testLogging {
         lifecycle {

@@ -1,0 +1,17 @@
+{
+  "base": {
+    "logo": "easypay.png",
+    "project": "EasyPay",
+    "environment": "Some env",
+    "comment": "Some comment",
+    "reportLink": "",
+    "language": "en",
+    "allureFolder": "build/allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6659944257:AAEQprVK0e88zDhwjG0ds5EcOxXBBt6zOqs",
+    "chat": "",
+    "replyTo": ""
+  }
+}
