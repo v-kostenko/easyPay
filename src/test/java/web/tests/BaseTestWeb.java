@@ -24,7 +24,6 @@ public abstract class BaseTestWeb {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
-
     @AfterEach
     public void tearDown() {
         Selenide.closeWebDriver();
