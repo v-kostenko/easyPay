@@ -1,14 +1,14 @@
-package api.auth_stage;
+package api.auth;
 
-import api.auth_stage.payloads.AuthDesktop;
-import api.auth_stage.payloads.CreateApp;
+import api.auth.payloads.AuthDesktop;
+import api.auth.payloads.CreateApp;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
 
-import static api.auth_stage.constants.Constants.PASSWORD;
-import static api.auth_stage.constants.Constants.PHONE;
+import static api.auth.constants.Constants.PASSWORD;
+import static api.auth.constants.Constants.PHONE;
 import static io.restassured.RestAssured.given;
 
 public class BaseTestApiStage {
@@ -16,7 +16,7 @@ public class BaseTestApiStage {
     protected String pageId = "";
     protected String requestedSessionId = "";
 
-    protected String accessToken = "";
+    protected static String accessToken = "";
     public CreateApp createApp;
     public static RequestSpecification specification;
     public static RequestSpecification specificationNoAppId;
@@ -96,6 +96,15 @@ public class BaseTestApiStage {
                 .when().post("https://auth.easypay.ua/api/auth/desktop")
                 .then().extract().jsonPath().getString("data.access_token");
     }
+
+//    public static String generateAccessToken(String phone, String password) {
+//        AuthDesktop authDesktop = new AuthDesktop(phone, password);
+//
+//        accessToken = given().spec(specification).body(authDesktop)
+//                .when().post("https://auth.easypay.ua/api/auth/desktop")
+//                .then().extract().jsonPath().getString("data.access_token");
+//        return accessToken;
+//    }
 
 
 }

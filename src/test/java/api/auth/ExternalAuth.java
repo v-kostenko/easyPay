@@ -1,6 +1,6 @@
-package api.auth_stage;
+package api.auth;
 
-import api.auth_stage.payloads.Providers;
+import api.auth.payloads.Providers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

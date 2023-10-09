@@ -1,7 +1,7 @@
-package api.auth_stage;
+package api.auth;
 
-import api.auth_stage.payloads.DeleteReasons;
-import api.auth_stage.payloads.DeleteUser;
+import api.auth.payloads.DeleteReasons;
+import api.auth.payloads.DeleteUser;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;

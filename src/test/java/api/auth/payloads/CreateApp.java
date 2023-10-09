@@ -1,4 +1,4 @@
-package api.auth_stage.payloads;
+package api.auth.payloads;
 
 public class CreateApp {
     private String logoPath;

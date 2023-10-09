@@ -1,13 +1,13 @@
-package api.auth_stage;
+package api.auth;
 
-import api.auth_stage.payloads.CheckConfirmPhoneCode;
-import api.auth_stage.payloads.CheckPhoneChannel;
+import api.auth.payloads.CheckConfirmPhoneCode;
+import api.auth.payloads.CheckPhoneChannel;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static api.auth_stage.constants.Constants.*;
+import static api.auth.constants.Constants.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 

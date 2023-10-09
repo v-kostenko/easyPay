@@ -1,4 +1,4 @@
-package api.auth_stage.payloads;
+package api.auth.payloads;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
