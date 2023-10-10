@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 
 
-public class AuthTerminal extends BaseTestApi {
+public class AuthTerminal extends Base {
 
     private static final String PATH = "/api/auth/terminal";
 

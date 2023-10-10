@@ -9,7 +9,7 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 
 
-public class ProfileTest extends BaseTestApi {
+public class ProfileTest extends BaseTest {
 
     @Test
     @DisplayName("Get current profile")

@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 @Tag("api")
-public class AuthDesktopTests extends BaseTestApiStage {
+public class AuthDesktopTests extends BaseTestApi {
     private static final String PATH = "/api/auth/desktop";
 
     // TODO

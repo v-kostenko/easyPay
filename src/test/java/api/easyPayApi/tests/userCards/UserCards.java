@@ -1,6 +1,6 @@
 package api.easyPayApi.tests.userCards;
 
-import api.easyPayApi.tests.BaseTestApi;
+import api.easyPayApi.tests.BaseTest;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static io.restassured.path.json.JsonPath.from;
 
-public class UserCards extends BaseTestApi{
+public class UserCards extends BaseTest {
     protected  final String BASE_URL = "https://apistage.easypay.ua";
 
 

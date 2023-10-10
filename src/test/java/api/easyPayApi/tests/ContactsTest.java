@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 
-public class ContactsTest extends BaseTestApi {
+public class ContactsTest extends BaseTest {
 
     @Test
     @DisplayName("Get contacts")

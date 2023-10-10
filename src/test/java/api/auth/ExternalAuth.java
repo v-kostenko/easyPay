@@ -9,7 +9,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class ExternalAuth extends BaseTestApiStage {
+public class ExternalAuth extends BaseTestApi {
 
 
     @Test

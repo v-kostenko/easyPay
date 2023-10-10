@@ -38,11 +38,11 @@ public abstract class BaseTestWeb {
     }
 
     private static void setEnv() {
-        String envirment = System.getProperty("env","prod");
+        String environment = System.getProperty("env","prod");
 
-        if (Objects.equals(envirment, "prod")) {
+        if (Objects.equals(environment, "prod")) {
             Configuration.baseUrl = "https://easypay.ua/ua";
-        } else if (Objects.equals(envirment, "dev")) {
+        } else if (Objects.equals(environment, "dev")) {
             Configuration.baseUrl = "https://dev.easypay.ua/ua";
         } else {
             Configuration.baseUrl = "https://stage.easypay.ua/ua";

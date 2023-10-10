@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class BlogTests extends BaseTestApi {
+public class BlogTests extends BaseTest {
 
     @Test
     public void getBlogVideo(){

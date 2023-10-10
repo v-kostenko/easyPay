@@ -11,7 +11,7 @@ import static api.auth.constants.Constants.PHONE;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class AuthTerminalTests extends BaseTestApiStage{
+public class AuthTerminalTests extends BaseTestApi {
     private static final String PATH = "/api/auth/terminal";
 
     // TODO

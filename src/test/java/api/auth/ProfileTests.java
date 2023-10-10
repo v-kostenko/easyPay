@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 @Tag("api")
-public class ProfileTests extends BaseTestApiStage{
+public class ProfileTests extends BaseTestApi {
     private static final String PATH = "/api/users/profile";
 
     @Test

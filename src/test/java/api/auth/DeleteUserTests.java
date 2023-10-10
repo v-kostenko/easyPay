@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 @Tag("api")
-public class DeleteUserTests extends BaseTestApiStage {
+public class DeleteUserTests extends BaseTestApi {
     private static final String PATH_DELETE_CHECK = "/api/users/delete/check";
     private static final String PATH_DELETE_REASONS = "/api/users/delete/reasons";
     private static final String PATH_DELETE = "/api/users/delete";

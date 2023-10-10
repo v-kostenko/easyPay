@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static io.restassured.RestAssured.given;
 
-public class BaseTestApi {
+public class BaseTest {
     protected String appId = "";
     protected String pageId = "";
     protected String requestedSessionId = "";

@@ -1,11 +1,8 @@
 package api.auth;
 
-import org.junit.jupiter.api.Test;
-
-import static api.auth.constants.Constants.PHONE_UNREGISTERED;
 import static io.restassured.RestAssured.given;
 
-public class AuthMobileTests extends BaseTestApiStage{
+public class AuthMobileTests extends BaseTestApi {
 
 //    @Test
 //    public void notRegisteredUser(){

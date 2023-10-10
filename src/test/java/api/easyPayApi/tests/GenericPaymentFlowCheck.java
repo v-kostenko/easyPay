@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 
-public class GenericPaymentFlowCheck extends BaseTestApi {
+public class GenericPaymentFlowCheck extends BaseTest {
 
     @Test
     @Owner("Volodymyr Kostenko")

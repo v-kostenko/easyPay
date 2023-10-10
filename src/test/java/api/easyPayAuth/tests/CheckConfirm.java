@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class CheckConfirm extends BaseTestApi {
+public class CheckConfirm extends Base {
     private final String PATH = "/api/check/confirm";
 
     @Test

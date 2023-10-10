@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasSize;
 
 
-public class DeleteUser extends BaseTestApi {
+public class DeleteUser extends Base {
 
     @Test
     @DisplayName("Get delete reasons")

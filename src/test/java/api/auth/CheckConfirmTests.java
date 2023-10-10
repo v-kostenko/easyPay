@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 @Tag("api")
-public class CheckConfirmTests extends BaseTestApiStage{
+public class CheckConfirmTests extends BaseTestApi {
     private static final String PATH = "/api/check/confirm";
 
     @Test

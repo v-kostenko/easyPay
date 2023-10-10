@@ -2,16 +2,20 @@ package api.auth;
 
 import api.auth.payloads.AuthDesktop;
 import api.auth.payloads.CreateApp;
+import com.codeborne.selenide.Configuration;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.Objects;
 
 import static api.auth.constants.Constants.PASSWORD;
 import static api.auth.constants.Constants.PHONE;
 import static io.restassured.RestAssured.given;
 
-public class BaseTestApiStage {
+public class BaseTestApi {
     protected String appId = "";
     protected String pageId = "";
     protected String requestedSessionId = "";
@@ -22,7 +26,13 @@ public class BaseTestApiStage {
     public static RequestSpecification specificationNoAppId;
     public static RequestSpecification specificationNoPartnerKey;
     public static RequestSpecification specificationPtksNoAppId;
-    protected String BASE_URL = "https://auth.easypay.ua";
+    protected static String BASE_URL = "https://authstage.easypay.ua";
+
+
+    @BeforeAll
+    public static void setEnv(){
+        setApiEnv();
+    }
 
 
     @BeforeEach
@@ -106,5 +116,16 @@ public class BaseTestApiStage {
 //        return accessToken;
 //    }
 
+    private static void setApiEnv() {
+        String envApi = System.getProperty("env","prod");
+
+        if (Objects.equals(envApi, "prod")) {
+            BASE_URL = "https://auth.easypay.ua";
+        } else if (Objects.equals(envApi, "test")) {
+            BASE_URL = "https://authtest.easypay.ua";
+        } else {
+            BASE_URL = "https://authstage.easypay.ua";
+        }
+    }
 
 }

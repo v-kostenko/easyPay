@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import static io.restassured.RestAssured.given;
 import static io.restassured.filter.log.LogDetail.ALL;
 
-public class BaseTestApi {
+public class Base {
     protected final String BASE_URL_TEST = "https://authtest.easypay.ua";
     protected static String TOKEN = "";
 

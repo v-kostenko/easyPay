@@ -3,7 +3,7 @@ package api.easyPayApi.steps;
 import io.qameta.allure.Step;
 import io.restassured.response.ResponseBodyData;
 
-import static api.easyPayApi.tests.BaseTestApi.specification;
+import static api.easyPayApi.tests.BaseTest.specification;
 import static io.restassured.RestAssured.given;
 
 public class ProfileStep  {

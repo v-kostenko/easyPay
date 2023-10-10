@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class Profile extends BaseTestApi {
+public class Profile extends Base {
     protected RequestSpecification desktopRequestSpecification = new RequestSpecBuilder()
             .addHeader("Locale", "UA")
             .addHeader("AppId", "e580032b-b20a-4950-a608-a36b4e5feba3")
