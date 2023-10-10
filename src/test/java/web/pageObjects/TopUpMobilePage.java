@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class TopUpMobilePage {
-    public static SelenideElement topUpMobileAmountField = $x("//div[contains(@class,'mat-form-field-infix')]//input[@input-decimal='2']");
+    public static SelenideElement topUpMobileAmountField = $x("//div[contains(@class,'service_description')]//input[@input-decimal='2']");
     public static SelenideElement topUpMobileServiceHeroName = $x("//div[contains(@class,'services_hero-name')]//h1");
     public static SelenideElement topUpMobileFieldError = $x("//span[contains(@class,'field-error')]");
     public static SelenideElement topUpMobilePageSubmitButton = $x("//div[contains(@class,'form-row')]/button");

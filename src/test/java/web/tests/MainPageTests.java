@@ -111,13 +111,30 @@ public class MainPageTests extends BaseTestWeb {
         Thread.sleep(2000);
         clickTopUpSubmitButton();
         Thread.sleep(2000);
-        inputAmountToTopUpMobileField("0");
+        inputAmountToTopUpMobileField("0.99");
         step("Click somewhere to get error message", () -> {
             topUpMobileServiceHeroName.click();
         });
         step("Check error message and state 'Submit' button", () -> {
             Assertions.assertEquals(TOP_UP_MOBILE_MORE_THAN_1_UA_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
             Assertions.assertFalse(isTopUpMobilePageSubmitButtonEnable());
+        });
+    }
+
+    @Test
+    @DisplayName("Try to top-up mobile with 4 999.99 UA. Unlogged user.")
+    @Owner("Volodymyr Kostenko")
+    public void topUpMobileInput4999_99UaToAmountField() throws InterruptedException {
+        inputPhoneForTopUp("80958872559");
+        Thread.sleep(2000);
+        clickTopUpSubmitButton();
+        Thread.sleep(2000);
+        inputAmountToTopUpMobileField("4999.99");
+        step("Click somewhere to get error message", () -> {
+            topUpMobileServiceHeroName.click();
+        });
+        step("Check state 'Submit' button (Enable).", () -> {
+            Assertions.assertTrue(isTopUpMobilePageSubmitButtonEnable());
         });
     }
 
@@ -200,7 +217,8 @@ public class MainPageTests extends BaseTestWeb {
     @Test
     @DisplayName("Check error messages c2c transfer money")
     @Owner("Volodymyr Kostenko")
-    public void checkErrorMessagesC2CTransferMoney() {
+    public void checkErrorMessagesC2CTransferMoney() throws InterruptedException {
+        Thread.sleep(1500);
         clickTransferMoneyButton();
         Assertions.assertEquals(MAIN_PAGE_CVV_VALIDATION_ERROR_MESSAGE, getCvvValidationErrorMessage());
         // Check all error messages
