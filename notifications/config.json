@@ -1,6 +1,5 @@
 {
   "base": {
-    "logo": "easypay.png",
     "project": "${JOB_BASE_NAME}",
     "environment": "ENV",
     "comment": "",
