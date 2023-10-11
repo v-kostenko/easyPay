@@ -4,7 +4,7 @@ public class Constants {
     public static final String MAIN_PAGE_TITLE = "EasyPay — український сервіс онлайн оплат | Надійні платежі, перекази в інтернеті";
     public static final String PAYMENT_TITLE = "Платежі";
     public static final String PHONE = "660051447";
-    public static final String PASSWORD = "Qwerty12345";
+    public static final String PASSWORD = "Qwerty1234";
 
     //public static final String PASSWORD = "Hppaviliondv1123";
     // public static final String PHONE = "933431723";
