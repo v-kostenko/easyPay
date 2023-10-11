@@ -75,5 +75,39 @@ public class MainPageSteps {
         return mainPageCvvValidationErrorMessage.shouldBe(visible).getText();
     }
 
+    @Step("Get receipt error message")
+    public static String getReceiptErrorMessage(){
+        return blockErrorReceipt.shouldBe(visible).getText();
+    }
+
+    @Step("Click on the 'Download' receipt button")
+    public static void clickOnTheDownloadReceiptButton(){
+        downloadReceiptButton.shouldBe(visible).click();
+    }
+
+    @Step("Get error message for 'TransactionId' field")
+    public static String getErrorMessageForTransactionIdField(){
+       return receiptErrorMessageForTransactionIdField.shouldBe(visible).getText();
+    }
+
+    @Step("Get error message for 'Amount' field")
+    public static String getErrorMessageForAmountField(){
+        return receiptErrorMessageForAmountField.shouldBe(visible).getText();
+    }
+
+    @Step("Input payment ID")
+    public static void inputPaymentId(String paymentId){
+        receiptInputPaymentIdField.shouldBe(visible).setValue(paymentId);
+    }
+
+    @Step("Input amount ID")
+    public static void inputAmount(String amount){
+        receiptInputAmountField.shouldBe(visible).setValue(amount);
+    }
+
+
+
+
+
 
 }

@@ -33,6 +33,14 @@ public class MainPage {
 
     public static SelenideElement mainPageCvvValidationErrorMessage = $x("//div[@class='c2c-cvv-validation']//span");
 
+    public static SelenideElement blockErrorReceipt = $x("//div[contains(@class,'receipt__container')]//div[contains(@class,'block-error--receipt')]");
+    public static SelenideElement downloadReceiptButton = $x("//div[@class='receipt__button']//button");
+    // TODO
+    public static SelenideElement receiptErrorMessageForTransactionIdField = $x("(//div[@class='receipt__form-wrapper']//span[contains(@class,'field-error')])[1]");
+    public static SelenideElement receiptErrorMessageForAmountField = $x("(//div[@class='receipt__form-wrapper']//span[contains(@class,'field-error')])[2]");
+
+    public static SelenideElement receiptInputPaymentIdField = $x("(//div[@class='receipt__form-wrapper']//input)[1]");
+    public static SelenideElement receiptInputAmountField = $x("(//div[@class='receipt__form-wrapper']//input)[2]");
 
 
 }

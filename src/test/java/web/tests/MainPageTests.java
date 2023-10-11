@@ -225,4 +225,39 @@ public class MainPageTests extends BaseTestWeb {
     }
 
 
+    // --------- Receipt ---
+    @Test
+    @DisplayName("Check error messages for 'PaymentId' and 'Transaction amount' fields")
+    @Description("Don't fill fields and click 'Download' button")
+    public void checkReceiptErrorMessages() {
+        clickOnTheDownloadReceiptButton();
+        step("Check error messages for 'PaymentId' and 'Transaction amount' fields", () -> {
+            Assertions.assertEquals(RECEIPT_FIELD_ERROR_MESSAGE_FOR_ID_AND_AMOUNT, getErrorMessageForTransactionIdField());
+            Assertions.assertEquals(RECEIPT_FIELD_ERROR_MESSAGE_FOR_ID_AND_AMOUNT, getErrorMessageForAmountField());
+        });
+    }
+
+    @Test
+    @DisplayName("Input valid Payment ID and not valid amount")
+    public void checkInvalidAmountErrorMessage() {
+        inputPaymentId(PAYMENT_ID);
+        inputAmount("222");
+        clickOnTheDownloadReceiptButton();
+        step("Check 'Invalid amount error message'", () -> {
+            Assertions.assertEquals(INVALID_AMOUNT_ERROR_MESSAGE, getReceiptErrorMessage());
+        });
+    }
+
+    @Test
+    @DisplayName("Input invalid Payment ID and valid amount")
+    public void checkInvalidPaymentIdErrorMessage() {
+        inputPaymentId(PAYMENT_ID + "12");
+        inputAmount("3");
+        clickOnTheDownloadReceiptButton();
+        step("Check 'Invalid amount error message'", () -> {
+            Assertions.assertEquals(INVALID_PAYMENT_ID_ERROR_MESSAGE, getReceiptErrorMessage());
+        });
+    }
+
+
 }

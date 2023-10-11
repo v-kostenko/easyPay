@@ -31,5 +31,11 @@ public class Constants {
     public static final String MAIN_PAGE_CVV_VALIDATION_ERROR_MESSAGE = "CVV: Обов'язково для заповнення";
 
 
+    public static final String RECEIPT_FIELD_ERROR_MESSAGE_FOR_ID_AND_AMOUNT = "Обов'язково для заповнення";
+    public static final String PAYMENT_ID = "1308156204";
+    public static final String INVALID_AMOUNT_ERROR_MESSAGE = "Помилка системи: Хибно вказана сумма";
+    public static final String INVALID_PAYMENT_ID_ERROR_MESSAGE = "Помилка системи: Хибний номер транзакції";
+
+
 
 }
