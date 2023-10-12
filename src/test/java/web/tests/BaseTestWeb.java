@@ -17,9 +17,9 @@ public abstract class BaseTestWeb {
     public static void setUp() {
         // Configuration.headless = true; // true - Не открывать физически браузер
         Configuration.timeout = 15000;
-         //Configuration.browser = "firefox";
+        //Configuration.browser = "firefox";
         setBrowser();
-         // Configuration.baseUrl = "https://easypay.ua/ua";
+        //Configuration.baseUrl = "https://easypay.ua/ua";
         setEnv();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
@@ -38,7 +38,7 @@ public abstract class BaseTestWeb {
     }
 
     private static void setEnv() {
-        String environment = System.getProperty("env","prod");
+        String environment = System.getProperty("env", "prod");
 
         if (Objects.equals(environment, "prod")) {
             Configuration.baseUrl = "https://easypay.ua/ua";

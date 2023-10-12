@@ -97,6 +97,7 @@ public class MainPageTests extends BaseTestWeb {
     @DisplayName("Check mobile top-up mandatory for completion error message")
     @Owner("Volodymyr Kostenko")
     public void topUpMobileCheckMandatoryErrorMessage() throws InterruptedException {
+        Thread.sleep(1500);
         clickTopUpSubmitButton();
         step("Check error message", () -> {
             Assertions.assertEquals(REGISTER_PAGE_PHONE_FIELD_MANDATORY_ERROR_MESSAGE, getTopUpPhoneFieldErrorMessage());
