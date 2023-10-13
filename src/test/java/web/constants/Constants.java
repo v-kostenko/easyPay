@@ -36,6 +36,8 @@ public class Constants {
     public static final String INVALID_AMOUNT_ERROR_MESSAGE = "Помилка системи: Хибно вказана сумма";
     public static final String INVALID_PAYMENT_ID_ERROR_MESSAGE = "Помилка системи: Хибний номер транзакції";
 
+    public static final String LOGIN_VIA_GOOGLE_HEADER = "Вхід через Google";
+
 
 
 }

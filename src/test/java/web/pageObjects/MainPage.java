@@ -42,5 +42,6 @@ public class MainPage {
     public static SelenideElement receiptInputPaymentIdField = $x("(//div[@class='receipt__form-wrapper']//input)[1]");
     public static SelenideElement receiptInputAmountField = $x("(//div[@class='receipt__form-wrapper']//input)[2]");
 
+    public static SelenideElement googlePageHeader = $x("//div[@class='Bw8v1']");
 
 }

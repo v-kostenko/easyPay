@@ -12,6 +12,7 @@ import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.*;
 import static web.pageObjects.PaymentsPage.getProfileHeaderTitleOnPaymentsPage;
 import static web.steps.LoginSteps.*;
+import static web.steps.MainPageSteps.getHeaderOnTheGooglePage;
 import static web.steps.RegistrationSteps.getRegistrationPageHeader;
 import static web.steps.RestoreSteps.getRestorePageHeader;
 
@@ -100,13 +101,14 @@ public class LoginTests extends BaseTestWeb {
     }
 
     @Test
-    @DisplayName("Check Google Auth button")
+    @DisplayName("Check that 'Continue with Google' button redirect to Google page")
     @Owner("Volodymyr Kostenko")
-    @Disabled
-    public void checkGoogleAuth() {
+    public void checkGoogleAuthRedirectButton() {
         clickHeaderLoginButton();
         clickGoogleAuthButton();
-        // TODO Що тут перевірити? Відкривається сторінка Гугл.
+        step("Check that we go to Google auth page", ()-> {
+            Assertions.assertEquals(LOGIN_VIA_GOOGLE_HEADER , getHeaderOnTheGooglePage());
+        });
     }
 
     // TODO Как сделать чтоб теже тесты проверить на разных размерах браузера и мобаил моде?

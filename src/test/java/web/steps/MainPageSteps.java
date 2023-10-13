@@ -106,6 +106,10 @@ public class MainPageSteps {
     }
 
 
+    @Step("Get header on the Google auth page")
+    public static String getHeaderOnTheGooglePage(){
+        return googlePageHeader.should(visible).getText().trim();
+    }
 
 
 
