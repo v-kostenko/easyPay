@@ -16,11 +16,12 @@ public abstract class BaseTestWeb {
     @BeforeAll
     public static void setUp() {
         // Configuration.headless = true; // true - Не открывать физически браузер
-        Configuration.timeout = 15000;
-        //Configuration.browser = "firefox";
-        setBrowser();
-        //Configuration.baseUrl = "https://easypay.ua/ua";
+        Configuration.timeout = 7000;
+        // Configuration.browser = "chrome";
+         setBrowser();
+        // Configuration.baseUrl = "https://easypay.ua/ua";
         setEnv();
+        //Configuration.browserSize = "1920x1000";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 

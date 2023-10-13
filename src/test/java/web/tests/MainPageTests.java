@@ -226,7 +226,7 @@ public class MainPageTests extends BaseTestWeb {
     }
 
 
-    // --------- Receipt ---
+    // --------- Receipt ---------
     @Test
     @DisplayName("Check error messages for 'PaymentId' and 'Transaction amount' fields")
     @Description("Don't fill fields and click 'Download' button")
