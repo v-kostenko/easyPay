@@ -7,7 +7,7 @@ import org.junit.jupiter.api.*;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static web.constants.Constants.*;
-import static web.pageObjects.CatalogPopularPage.getServiceNotFoundText;
+import static web.pageObjects.SearchResultsPage.*;
 import static web.steps.MainPageSteps.searchByKeyWord;
 
 @Tag("web")
@@ -33,11 +33,11 @@ public class SearchResults extends BaseTestWeb {
     @Test
     @DisplayName("Search by existent IBAN")
     @Owner("Volodymyr Kostenko")
-    @Disabled
     public void searchByExistentIBAN() throws InterruptedException {
         searchByKeyWord(EXISTENT_IBAN);
-        step("Check that ", () -> {
-            //    Assertions.assertTrue(getSearchResultListSize() > 0);
+        Assertions.assertEquals(SEARCH_TAG_TITLE , getSearchResultTitle());
+        step("", ()->{
+
         });
     }
 

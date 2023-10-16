@@ -37,6 +37,7 @@ public class Constants {
     public static final String INVALID_PAYMENT_ID_ERROR_MESSAGE = "Помилка системи: Хибний номер транзакції";
 
     public static final String LOGIN_VIA_GOOGLE_HEADER = "Вхід через Google";
+    public static final String SEARCH_TAG_TITLE = "Популярні";
 
 
 

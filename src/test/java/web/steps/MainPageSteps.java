@@ -4,7 +4,7 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
-import static web.pageObjects.CatalogPopularPage.searchTagTitle;
+import static web.pageObjects.SearchResultsPage.searchTagTitle;
 import static web.pageObjects.MainPage.*;
 
 public class MainPageSteps {

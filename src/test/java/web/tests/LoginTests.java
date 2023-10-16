@@ -111,7 +111,6 @@ public class LoginTests extends BaseTestWeb {
         });
     }
 
-    // TODO Как сделать чтоб теже тесты проверить на разных размерах браузера и мобаил моде?
 
 
 }
